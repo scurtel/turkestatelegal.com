@@ -113,6 +113,22 @@ export default function RootLayout({ children }) {
                 <Link href="/contact" aria-label="Contact page">
                   go
                 </Link>
+                <a
+                  href="https://www.facebook.com/profile.php?id=61567601773192"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Facebook — Turk Estate Legal"
+                >
+                  fb
+                </a>
+                <a
+                  href="https://www.instagram.com/turkestatelegal/"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Instagram — Turk Estate Legal"
+                >
+                  ig
+                </a>
               </div>
             </section>
           </div>
