@@ -32,6 +32,9 @@ export const metadata = {
     title: "Turk Estate Legal",
     description:
       "Clear legal and practical guidance in English for foreigners buying property in Turkey."
+  },
+  verification: {
+    google: "RfX71aYwKFNJb-8f4CLfocQokmTotwRvOHn3S0zLsv8"
   }
 };
 
