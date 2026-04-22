@@ -16,11 +16,20 @@
   box-sizing: border-box;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   margin: 0;
   color: var(--text);
   background: var(--background);
   line-height: 1.6;
+  font-size: 16px;
+}
+
+body.no-scroll {
+  overflow: hidden;
 }
 
 img,
@@ -48,6 +57,17 @@ a:hover {
 .main-content {
   padding-top: 2rem;
   padding-bottom: 3rem;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p,
+li {
+  text-wrap: pretty;
 }
 
 .site-header {
@@ -94,8 +114,8 @@ a:hover {
   border: 1px solid var(--border);
   background: #ffffff;
   border-radius: 8px;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   padding: 0.45rem;
   cursor: pointer;
 }
@@ -133,6 +153,15 @@ a:hover {
 .nav-links a:hover {
   color: var(--link);
   text-decoration: none;
+}
+
+.menu-toggle:active,
+.nav-links a:active,
+.hero-chip:active,
+.btn-primary:active,
+.welcome-contact-link:active,
+.article-header-action:active {
+  transform: scale(0.98);
 }
 
 .hero {
@@ -185,7 +214,7 @@ a:hover {
 }
 
 .hero-text {
-  max-width: 780px;
+  max-width: 68ch;
   line-height: 1.85;
   color: #cbd5e1;
   font-size: 1.05rem;
@@ -333,6 +362,10 @@ a:hover {
   margin-bottom: 1rem;
 }
 
+.article-card p {
+  line-height: 1.65;
+}
+
 .article-card-title {
   margin-top: 0.25rem;
 }
@@ -403,6 +436,8 @@ a:hover {
   border-radius: 14px;
   padding: 2rem;
   box-shadow: 0 4px 12px rgb(15 23 42 / 6%);
+  font-size: 1.02rem;
+  line-height: 1.78;
 }
 
 .article-content h2,
@@ -733,14 +768,18 @@ a:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 30px;
-  height: 30px;
+  width: 34px;
+  height: 34px;
   border: 1px solid rgb(190 161 90 / 46%);
   border-radius: 999px;
   font-size: 0.78rem;
 }
 
 @media (max-width: 760px) {
+  body {
+    padding-bottom: max(0px, env(safe-area-inset-bottom));
+  }
+
   .container {
     padding: 0 0.95rem;
   }
@@ -748,6 +787,10 @@ a:hover {
   .main-content {
     padding-top: 1.2rem;
     padding-bottom: 2rem;
+  }
+
+  .section-space {
+    margin-top: 1.75rem;
   }
 
   .nav-row {
@@ -792,7 +835,7 @@ a:hover {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 38px;
+    min-height: 44px;
     border: 1px solid var(--border);
     border-radius: 8px;
     background: rgb(255 255 255 / 70%);
@@ -815,7 +858,7 @@ a:hover {
   }
 
   .hero {
-    padding: 1.5rem;
+    padding: 1.4rem;
     min-height: 0;
   }
 
@@ -828,7 +871,9 @@ a:hover {
   }
 
   .article-content {
-    padding: 1.3rem;
+    padding: 1.15rem;
+    font-size: 0.98rem;
+    line-height: 1.72;
   }
 
   .article-header-content {
@@ -840,12 +885,18 @@ a:hover {
   }
 
   .hero-title {
-    font-size: clamp(1.55rem, 8vw, 2.1rem);
+    font-size: clamp(1.45rem, 7.2vw, 1.95rem);
+    line-height: 1.18;
   }
 
   .hero-text {
-    font-size: 0.98rem;
-    line-height: 1.72;
+    font-size: 0.96rem;
+    line-height: 1.68;
+  }
+
+  .article-card h3 {
+    font-size: 1.02rem;
+    line-height: 1.35;
   }
 
   .hero-actions {
@@ -889,8 +940,12 @@ a:hover {
   }
 
   .hero {
-    padding: 1.2rem;
+    padding: 1.05rem;
     border-radius: 12px;
+  }
+
+  .section-space {
+    margin-top: 1.45rem;
   }
 
   .article-header {
@@ -901,6 +956,11 @@ a:hover {
     padding: 1rem;
   }
 
+  .article-header-content h1 {
+    font-size: clamp(1.32rem, 7.8vw, 1.75rem);
+    line-height: 1.2;
+  }
+
   .article-header-actions {
     gap: 0.45rem;
   }
@@ -908,6 +968,10 @@ a:hover {
   .article-header-action {
     width: 100%;
     text-align: center;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .btn-primary {

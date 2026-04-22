@@ -181,6 +181,7 @@ export default function HomePage() {
                   alt={article.title}
                   width={800}
                   height={450}
+                  sizes="(max-width: 760px) 100vw, (max-width: 1100px) 50vw, 360px"
                   className="article-thumb-img"
                 />
               </div>
@@ -212,6 +213,7 @@ export default function HomePage() {
                   alt={article.title}
                   width={800}
                   height={450}
+                  sizes="(max-width: 760px) 100vw, (max-width: 1100px) 50vw, 360px"
                   className="article-thumb-img"
                 />
               </div>
