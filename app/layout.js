@@ -1,6 +1,7 @@
 import "./globals.css";
 import Link from "next/link";
 import { Inter } from "next/font/google";
+import SiteHeader from "./SiteHeader";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -35,6 +36,14 @@ export const metadata = {
   },
   verification: {
     google: "RfX71aYwKFNJb-8f4CLfocQokmTotwRvOHn3S0zLsv8"
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true
+    }
   }
 };
 
@@ -42,19 +51,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <header className="site-header">
-          <div className="container nav-row">
-            <Link href="/" className="brand">
-              Turk Estate Legal
-            </Link>
-            <nav className="nav-links" aria-label="Main navigation">
-              <Link href="/">Home</Link>
-              <Link href="/articles">Articles</Link>
-              <Link href="/about">About</Link>
-              <Link href="/contact">Contact</Link>
-            </nav>
-          </div>
-        </header>
+        <SiteHeader />
         <main className="container main-content">{children}</main>
         <footer className="site-footer">
           <div className="container footer-grid">

@@ -23,6 +23,13 @@ body {
   line-height: 1.6;
 }
 
+img,
+svg,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
 a {
   color: var(--link);
   text-decoration: none;
@@ -57,6 +64,15 @@ a:hover {
   justify-content: space-between;
   align-items: center;
   min-height: 70px;
+  gap: 1rem;
+}
+
+.nav-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
 }
 
 .brand {
@@ -70,6 +86,44 @@ a:hover {
   gap: 1.2rem;
   font-weight: 500;
   flex-wrap: wrap;
+}
+
+.menu-toggle {
+  display: none;
+  appearance: none;
+  border: 1px solid var(--border);
+  background: #ffffff;
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  padding: 0.45rem;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #1f2937;
+  border-radius: 999px;
+  transform-origin: center;
+  transition: transform 200ms ease, opacity 180ms ease;
+}
+
+.menu-toggle span + span {
+  margin-top: 5px;
+}
+
+.menu-toggle.is-open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.is-open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 .nav-links a {
@@ -155,6 +209,63 @@ a:hover {
   transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
 }
 
+.welcome-contact {
+  margin-top: 1.1rem;
+}
+
+.welcome-contact-inner {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 1rem;
+  border: 1px solid #d7e0ea;
+  border-radius: 14px;
+  background: linear-gradient(160deg, #f8fbff, #ffffff);
+  padding: 1.1rem;
+  box-shadow: 0 4px 12px rgb(15 23 42 / 6%);
+}
+
+.welcome-contact-kicker {
+  margin: 0 0 0.2rem;
+  font-size: 0.8rem;
+  color: #1e3a8a;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.welcome-contact-inner h2 {
+  margin: 0;
+}
+
+.welcome-contact-inner p {
+  margin-bottom: 0;
+}
+
+.welcome-contact-actions {
+  display: grid;
+  gap: 0.55rem;
+  align-content: start;
+}
+
+.welcome-contact-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.62rem 0.8rem;
+  background: var(--surface);
+  color: #1f2937;
+  font-weight: 600;
+  min-height: 42px;
+}
+
+.welcome-contact-link:hover {
+  text-decoration: none;
+  border-color: #bfd4ef;
+  background: #f8fbff;
+}
+
 .hero-chip:hover {
   text-decoration: none;
   background: rgb(18 30 53 / 80%);
@@ -234,6 +345,7 @@ a:hover {
   margin-bottom: 0.25rem;
   color: var(--muted);
   gap: 0.6rem;
+  flex-wrap: wrap;
 }
 
 .card-category,
@@ -640,20 +752,50 @@ a:hover {
 
   .nav-row {
     min-height: unset;
-    align-items: flex-start;
     flex-direction: column;
     gap: 0.55rem;
     padding: 0.65rem 0;
+  }
+
+  .nav-top {
+    width: 100%;
   }
 
   .brand {
     font-size: 1.05rem;
   }
 
+  .menu-toggle {
+    display: inline-block;
+  }
+
   .nav-links {
     width: 100%;
-    gap: 0.75rem 1rem;
+    gap: 0.5rem;
     font-size: 0.93rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: max-height 220ms ease, opacity 200ms ease;
+  }
+
+  .site-header.is-open .nav-links {
+    max-height: 160px;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 38px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: rgb(255 255 255 / 70%);
   }
 
   .contact-card {
@@ -710,6 +852,21 @@ a:hover {
     grid-template-columns: 1fr;
   }
 
+  .hero-chip {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .welcome-contact-inner {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .welcome-contact-actions {
+    grid-template-columns: 1fr;
+  }
+
   .article-grid {
     grid-template-columns: 1fr;
   }
@@ -756,9 +913,18 @@ a:hover {
   .btn-primary {
     width: 100%;
     text-align: center;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .cta-row {
     width: 100%;
+  }
+
+  .welcome-contact-link {
+    width: 100%;
+    min-height: 44px;
   }
 }

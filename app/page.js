@@ -44,6 +44,35 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="welcome-contact section-space" aria-labelledby="quick-contact-title">
+        <div className="welcome-contact-inner">
+          <div>
+            <p className="welcome-contact-kicker">First time here?</p>
+            <h2 id="quick-contact-title">Contact Lawyer Ceren Sumer Cilli</h2>
+            <p>
+              If you are planning to buy property in Turkey, you can contact us
+              directly before making a payment or signing documents.
+            </p>
+          </div>
+          <div className="welcome-contact-actions">
+            <a href="tel:+905336342425" className="btn-primary">
+              Call: +90 533 634 24 25
+            </a>
+            <a
+              href="https://wa.me/905336342425"
+              target="_blank"
+              rel="noreferrer"
+              className="welcome-contact-link"
+            >
+              WhatsApp Message
+            </a>
+            <Link href="/contact" className="welcome-contact-link">
+              Contact Page
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <section className="section-space">
         <h2>Why Foreign Clients Trust This Platform</h2>
         <div className="trust-grid">

@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://turkestatelegal.com/sitemap.xml
