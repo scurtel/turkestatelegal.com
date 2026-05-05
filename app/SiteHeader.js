@@ -54,6 +54,9 @@ export default function SiteHeader() {
           <Link href="/contact" onClick={closeMenu}>
             Contact
           </Link>
+          <Link href="/calmernow-ai-privacy-policy" onClick={closeMenu}>
+            Privacy Policy
+          </Link>
         </nav>
       </div>
     </header>

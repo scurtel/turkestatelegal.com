@@ -81,6 +81,9 @@ export default function RootLayout({ children }) {
               <p>
                 <Link href="/contact">Contact</Link>
               </p>
+              <p>
+                <Link href="/calmernow-ai-privacy-policy">Privacy Policy</Link>
+              </p>
             </section>
 
             <section>
