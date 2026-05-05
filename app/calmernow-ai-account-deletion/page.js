@@ -64,14 +64,9 @@ export default function CalmerNowAccountDeletionPage() {
       <h2>Partial data deletion</h2>
       <p>
         Users may also request deletion of specific personal data without
-        deleting their entire account by emailing:
-      </p>
-      <p>
-        <a href="mailto:yigit.cilli@gmail.com">yigit.cilli@gmail.com</a>
-      </p>
-      <p>Please use the subject line:</p>
-      <p>
-        <strong>CalmerNow AI Data Deletion Request</strong>
+        deleting their entire account by emailing{" "}
+        <a href="mailto:yigit.cilli@gmail.com">yigit.cilli@gmail.com</a> with
+        the subject line &quot;CalmerNow AI Data Deletion Request.&quot;
       </p>
     </section>
   );
