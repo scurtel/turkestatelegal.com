@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { getAllArticles } from "@/lib/articles";
+import { getAllArticles, truncateArticleExcerpt } from "@/lib/articles";
 
 export const metadata = {
   title: "Articles",
@@ -42,7 +42,7 @@ export default function ArticlesPage() {
             <h2 className="article-card-title">
               <Link href={`/articles/${article.slug}`}>{article.title}</Link>
             </h2>
-            <p>{article.excerpt}</p>
+            <p>{truncateArticleExcerpt(article.excerpt)}</p>
             <p>
               <Link href={`/articles/${article.slug}`}>Read article</Link>
             </p>

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { getAllArticles } from "@/lib/articles";
+import { getAllArticles, truncateArticleExcerpt } from "@/lib/articles";
 
 export default function HomePage() {
   const articles = getAllArticles();
@@ -196,7 +196,7 @@ export default function HomePage() {
               <h3>
                 <Link href={`/articles/${article.slug}`}>{article.title}</Link>
               </h3>
-              <p>{article.excerpt}</p>
+              <p>{truncateArticleExcerpt(article.excerpt)}</p>
             </article>
           ))}
         </div>
@@ -228,7 +228,7 @@ export default function HomePage() {
               <h3>
                 <Link href={`/articles/${article.slug}`}>{article.title}</Link>
               </h3>
-              <p>{article.excerpt}</p>
+              <p>{truncateArticleExcerpt(article.excerpt)}</p>
             </article>
           ))}
         </div>
