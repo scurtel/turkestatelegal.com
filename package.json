@@ -9,7 +9,8 @@
     "lint": "next lint",
     "generate:draft": "node scripts/generate-article-draft.js",
     "generate:seo-articles": "node scripts/generate-seo-articles.js",
-    "generate:jun2026-articles": "node scripts/generate-five-seo-articles-jun2026.js"
+    "generate:jun2026-articles": "node scripts/generate-five-seo-articles-jun2026.js",
+    "generate:mersin-articles": "node scripts/generate-five-mersin-articles.js"
   },
   "dependencies": {
     "dotenv": "^17.4.2",
