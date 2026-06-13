@@ -1,11 +1,49 @@
 import Link from "next/link";
 import Image from "next/image";
-import { getAllArticles, truncateArticleExcerpt } from "@/lib/articles";
+import {
+  getAllArticles,
+  getMersinGuideArticles,
+  isMersinGuideArticle,
+  truncateArticleExcerpt
+} from "@/lib/articles";
+
+function ArticleCard({ article }) {
+  return (
+    <article className="article-card" key={article.slug}>
+      <div className="article-thumb">
+        <Image
+          src={article.coverImage}
+          alt={article.title}
+          width={800}
+          height={450}
+          sizes="(max-width: 760px) 100vw, (max-width: 1100px) 50vw, 360px"
+          className="article-thumb-img"
+        />
+      </div>
+      <p className="card-meta-row">
+        <span className="card-category">{article.category}</span>
+        {article.publishedAt ? (
+          <span className="card-date">
+            {new Date(article.publishedAt).toLocaleDateString("en-US")}
+          </span>
+        ) : null}
+      </p>
+      <h3>
+        <Link href={`/articles/${article.slug}`}>{article.title}</Link>
+      </h3>
+      <p>{truncateArticleExcerpt(article.excerpt)}</p>
+    </article>
+  );
+}
 
 export default function HomePage() {
   const articles = getAllArticles();
-  const featuredArticles = articles.slice(0, 3);
-  const latestArticles = articles.slice(3, 7);
+  const mersinGuides = getMersinGuideArticles();
+  const generalArticles = articles.filter(
+    (article) => !isMersinGuideArticle(article.slug)
+  );
+  const featuredArticles = generalArticles.slice(0, 3);
+  const latestArticles = generalArticles.slice(3, 7);
 
   return (
     <>
@@ -170,34 +208,31 @@ export default function HomePage() {
         </div>
       </section>
 
+      {mersinGuides.length > 0 ? (
+        <section className="section-space mersin-guides-section">
+          <div className="mersin-guides-header">
+            <h2>Mersin Guides</h2>
+            <p>
+              Legal and investment guidance for foreigners exploring property,
+              residence, citizenship, and company setup in Mersin.
+            </p>
+          </div>
+          <div className="article-grid">
+            {mersinGuides.map((article) => (
+              <ArticleCard article={article} key={article.slug} />
+            ))}
+          </div>
+          <p className="mersin-guides-footer">
+            <Link href="/articles">View all articles</Link>
+          </p>
+        </section>
+      ) : null}
+
       <section className="section-space">
         <h2>Featured Articles</h2>
         <div className="article-grid">
           {featuredArticles.map((article) => (
-            <article className="article-card" key={article.slug}>
-              <div className="article-thumb">
-                <Image
-                  src={article.coverImage}
-                  alt={article.title}
-                  width={800}
-                  height={450}
-                  sizes="(max-width: 760px) 100vw, (max-width: 1100px) 50vw, 360px"
-                  className="article-thumb-img"
-                />
-              </div>
-              <p className="card-meta-row">
-                <span className="card-category">{article.category}</span>
-                {article.publishedAt ? (
-                  <span className="card-date">
-                    {new Date(article.publishedAt).toLocaleDateString("en-US")}
-                  </span>
-                ) : null}
-              </p>
-              <h3>
-                <Link href={`/articles/${article.slug}`}>{article.title}</Link>
-              </h3>
-              <p>{truncateArticleExcerpt(article.excerpt)}</p>
-            </article>
+            <ArticleCard article={article} key={article.slug} />
           ))}
         </div>
       </section>
@@ -206,30 +241,7 @@ export default function HomePage() {
         <h2>Latest Updates</h2>
         <div className="article-grid">
           {latestArticles.map((article) => (
-            <article className="article-card" key={article.slug}>
-              <div className="article-thumb">
-                <Image
-                  src={article.coverImage}
-                  alt={article.title}
-                  width={800}
-                  height={450}
-                  sizes="(max-width: 760px) 100vw, (max-width: 1100px) 50vw, 360px"
-                  className="article-thumb-img"
-                />
-              </div>
-              <p className="card-meta-row">
-                <span className="card-category">{article.category}</span>
-                {article.publishedAt ? (
-                  <span className="card-date">
-                    {new Date(article.publishedAt).toLocaleDateString("en-US")}
-                  </span>
-                ) : null}
-              </p>
-              <h3>
-                <Link href={`/articles/${article.slug}`}>{article.title}</Link>
-              </h3>
-              <p>{truncateArticleExcerpt(article.excerpt)}</p>
-            </article>
+            <ArticleCard article={article} key={article.slug} />
           ))}
         </div>
       </section>

@@ -327,6 +327,29 @@ li {
   margin-top: 1rem;
 }
 
+.mersin-guides-section {
+  padding: 1.5rem;
+  border-radius: 16px;
+  background: linear-gradient(
+    165deg,
+    rgb(240 249 255 / 90%) 0%,
+    rgb(248 250 252 / 95%) 55%,
+    var(--surface) 100%
+  );
+  border: 1px solid rgb(14 116 144 / 12%);
+}
+
+.mersin-guides-header p {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+  max-width: 52rem;
+}
+
+.mersin-guides-footer {
+  margin: 1rem 0 0;
+  font-size: 0.95rem;
+}
+
 .article-card {
   border-radius: 14px;
   overflow: hidden;
