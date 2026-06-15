@@ -3,8 +3,23 @@ import ReactMarkdown from "react-markdown";
 import Image from "next/image";
 import Link from "next/link";
 import { getAllArticleSlugs, getArticleBySlug } from "@/lib/articles";
+import { buildArticlePageJsonLd } from "@/lib/article-schema";
 import ShareArticleButton from "./ShareArticleButton";
 import ArticleTocClient from "./ArticleTocClient";
+
+const SITE_URL = "https://turkestatelegal.com";
+
+function toAbsoluteImageUrl(pathOrUrl) {
+  if (!pathOrUrl) {
+    return `${SITE_URL}/icon.png`;
+  }
+
+  if (pathOrUrl.startsWith("http://") || pathOrUrl.startsWith("https://")) {
+    return pathOrUrl;
+  }
+
+  return `${SITE_URL}${pathOrUrl.startsWith("/") ? pathOrUrl : `/${pathOrUrl}`}`;
+}
 
 function slugifyHeading(value) {
   return value
@@ -57,17 +72,33 @@ export async function generateMetadata({ params }) {
     };
   }
 
+  const imageUrl = toAbsoluteImageUrl(article.coverImage);
+
   return {
-    title: article.seoTitle,
+    title: {
+      absolute: article.seoTitle || article.title
+    },
     description: article.seoDescription,
     alternates: {
       canonical: `/articles/${article.slug}`
     },
     openGraph: {
-      title: article.seoTitle,
+      title: article.seoTitle || article.title,
       description: article.seoDescription,
       type: "article",
-      url: `/articles/${article.slug}`
+      url: `/articles/${article.slug}`,
+      images: [
+        {
+          url: imageUrl,
+          alt: article.title
+        }
+      ]
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.seoTitle || article.title,
+      description: article.seoDescription,
+      images: [imageUrl]
     }
   };
 }
@@ -80,9 +111,14 @@ export default async function ArticleDetailPage({ params }) {
   }
   const tocItems = extractToc(article.content);
   const readingTime = getReadingTime(article.content);
+  const jsonLd = buildArticlePageJsonLd(article);
 
   return (
     <article>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <section className="article-header">
         <div className="article-header-bg" aria-hidden="true">
           <Image
