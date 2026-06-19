@@ -1,14 +1,14 @@
 ---
 title: Residence Permit After Buying Property in Turkey
 slug: residence-permit-after-buying-property-in-turkey
-seoTitle: Residence Permit After Buying Property in Turkey | Foreign Owner Guide
+seoTitle: Turkey Residence Permit After Property Purchase Guide
 seoDescription: >-
-  How property ownership may support a Turkish residence permit: eligibility,
-  documents, timelines, and what foreign owners should verify first.
+  Understand the process for a Turkish residence permit after buying property.
+  Learn eligibility, required documents, application steps, and key
 excerpt: >-
   What changes after you buy property in Turkey if you want a residence permit,
   and how to prepare applications without confusing ownership with approval.
-coverImage: ""
+coverImage: ''
 publishedAt: '2026-06-02'
 category: Residence Permit
 author: Turks Estate Legal

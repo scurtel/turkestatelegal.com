@@ -1,14 +1,14 @@
 ---
 title: 'Buying Property in Turkey: The Basics for Foreigners'
 slug: buying-property-in-turkey-basics
-seoTitle: Buying Property in Turkey Basics for Foreigners
+seoTitle: 'Buying Property in Turkey: Essential Legal Guide for'
 seoDescription: >-
-  Understand the essential legal and practical checks before buying property in
-  Turkey as a foreigner.
+  Navigate buying property in Turkey as a foreigner. Learn essential legal
+  checks, title deed verification, debt review, and secure contracts for a safe
 excerpt: >-
   A clear starting guide to legal checks, title deed safety, and practical next
   steps.
-coverImage: ""
+coverImage: ''
 publishedAt: '2026-04-21'
 category: Starter Guide
 ---

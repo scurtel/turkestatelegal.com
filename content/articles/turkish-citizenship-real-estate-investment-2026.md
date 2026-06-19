@@ -1,18 +1,19 @@
 ---
-title: >-
-  Turkish Citizenship by Real Estate Investment in 2026: Legal Requirements
+title: 'Turkish Citizenship by Real Estate Investment in 2026: Legal Requirements'
 slug: turkish-citizenship-real-estate-investment-2026
-seoTitle: "Turkish Citizenship by Real Estate Investment 2026"
+seoTitle: 'Turkish Citizenship by Real Estate: 2026 Legal Requirements'
 seoDescription: >-
-  A 2026 legal guide to Turkish citizenship by real estate investment, including the USD 400,000 threshold, title deed annotation, valuation report and holding period.
+  Understand 2026 legal requirements for Turkish citizenship by real estate
+  investment. Covers USD 400,000 threshold, title deed annotation, valuation,
+  and
 excerpt: >-
-  2026 legal requirements for citizenship through qualifying real estate: threshold, Tapu şerh, valuation, payments, and common filing mistakes.
-coverImage: ""
+  2026 legal requirements for citizenship through qualifying real estate:
+  threshold, Tapu şerh, valuation, payments, and common filing mistakes.
+coverImage: ''
 publishedAt: '2026-06-10'
-category: "Citizenship by Investment"
+category: Citizenship by Investment
 author: Turks Estate Legal
 ---
-
 # Turkish Citizenship by Real Estate Investment in 2026: Legal Requirements
 
 ## Overview of Turkish Citizenship by Real Estate Investment
@@ -100,4 +101,3 @@ Yes, you are permitted to rent out your property during the three-year restricti
 ---
 
 *This article is for general informational purposes only and does not constitute legal advice. Each case should be assessed according to its own facts and current legislation.*
-

@@ -1,16 +1,17 @@
 ---
-title: "Buying Property in Turkey Remotely with Power of Attorney"
+title: Buying Property in Turkey Remotely with Power of Attorney
 slug: buying-property-in-turkey-remotely-with-power-of-attorney
-seoTitle: "Buying Property in Turkey Remotely | Power of Attorney Safeguards"
+seoTitle: Remote Property Purchase in Turkey with Power of Attorney
 seoDescription: >-
-  Remote purchases in Turkey using power of attorney: scope, documents, verification, and how foreign buyers reduce risk when not on site.
+  Remote purchases in Turkey using power of attorney: Understand the scope, key
+  documents, verification, and how foreign buyers reduce risk when not on site.
 excerpt: >-
-  Remote execution mechanics: POA scope, controls, communication, and closing safely from abroad.
-coverImage: ""
+  Remote execution mechanics: POA scope, controls, communication, and closing
+  safely from abroad.
+coverImage: ''
 publishedAt: '2026-04-21'
-category: "Remote Purchase"
+category: Remote Purchase
 ---
-
 # Buying Turkish Property Remotely: Your Guide to a Secure Power of Attorney
 
 Turkey's appeal as a destination for property investment and lifestyle change continues to grow among foreign buyers. From the vibrant cityscapes of Istanbul to the serene Mediterranean coast, the opportunities are diverse and attractive. However, for many international purchasers, the practicalities of managing a property acquisition from a distance can seem daunting. The need to be physically present for key legal and administrative steps often presents a significant hurdle.

@@ -1,17 +1,18 @@
 ---
-title: "Buying Property in Turkey as a Foreigner: Legal Steps and Key Risks"
+title: 'Buying Property in Turkey as a Foreigner: Legal Steps and Key Risks'
 slug: buying-property-in-turkey-as-a-foreigner
-seoTitle: "Buying Property in Turkey as a Foreigner | Legal Guide"
+seoTitle: 'Foreigners Buying Property in Turkey: Legal Guide & Risks'
 seoDescription: >-
-  A legal guide for foreigners buying property in Turkey, including title deed transfer, due diligence, valuation reports, contracts, tax number and common risks.
+  A legal guide for foreigners buying property in Turkey. Understand essential
+  steps, title deed transfer, due diligence, contracts, and key risks.
 excerpt: >-
-  Legal steps and key risks when foreigners buy property in Turkey—from Law No. 2644 limits to Tapu transfer and due diligence.
-coverImage: ""
+  Legal steps and key risks when foreigners buy property in Turkey—from Law No.
+  2644 limits to Tapu transfer and due diligence.
+coverImage: ''
 publishedAt: '2026-06-10'
-category: "Buying Process"
+category: Buying Process
 author: Turks Estate Legal
 ---
-
 # Buying Property in Turkey as a Foreigner: Legal Steps and Key Risks
 
 ## Introduction
@@ -120,4 +121,3 @@ Yes, property owners in Turkey are subject to annual property taxes, which vary 
 ---
 
 *This article is for general informational purposes only and does not constitute legal advice. Each case should be assessed according to its own facts and current legislation.*
-

@@ -1,14 +1,14 @@
 ---
 title: Can Foreigners Buy Agricultural Land in Turkey?
 slug: can-foreigners-buy-agricultural-land-in-turkey
-seoTitle: Can Foreigners Buy Agricultural Land in Turkey? Rules and Practical Checks
+seoTitle: 'Foreigners Buying Agricultural Land in Turkey: Legal Rules'
 seoDescription: >-
-  A cautious guide for foreigners considering agricultural land in Turkey,
-  including restrictions, use expectations, and due diligence priorities.
+  Foreigners buying agricultural land in Turkey face specific rules. This guide
+  details legal restrictions, land use requirements, and due diligence needs.
 excerpt: >-
   A practical look at agricultural land ownership by foreigners, with emphasis
   on legal limits and verification steps.
-coverImage: ""
+coverImage: ''
 publishedAt: '2026-04-21'
 category: Land Purchase
 ---

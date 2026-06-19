@@ -1,14 +1,20 @@
 ---
-title: "Inheriting Property in Turkey: Legal Guide for Foreigners"
+title: 'Inheriting Property in Turkey: Legal Guide for Foreigners'
 slug: inheriting-property-in-turkey
-seoTitle: "Inheriting Property in Turkey: Legal Guide for Foreigners"
-seoDescription: "Navigating Turkish inheritance law for foreigners can be complex. This guide covers applicable laws, the inheritance process, taxes, and title deed transfer for property in Turkey. Get expert legal support."
-excerpt: "Navigating the complexities of inheritance law can be a challenging experience, especially when it involves assets in a foreign country. For foreigners inheriting property in Turkey, understanding the specific legal framework is paramount. Turkish inheritance law, influenced by civil law principles, has distinct rul..."
-coverImage: ""
+seoTitle: 'Inheriting Property in Turkey: Legal Guide for Foreigners'
+seoDescription: >-
+  Understand Turkish inheritance law for foreigners. This guide covers the legal
+  process, applicable laws, taxes, and title deed transfer for property in
+excerpt: >-
+  Navigating the complexities of inheritance law can be a challenging
+  experience, especially when it involves assets in a foreign country. For
+  foreigners inheriting property in Turkey, understanding the specific legal
+  framework is paramount. Turkish inheritance law, influenced by civil law
+  principles, has distinct rul...
+coverImage: ''
 publishedAt: '2026-05-14'
-category: "Inheritance Law"
+category: Inheritance Law
 ---
-
 # Inheriting Property in Turkey: A Comprehensive Legal Guide for Foreigners
 
 Navigating the complexities of inheritance law can be a challenging experience, especially when it involves assets in a foreign country. For foreigners inheriting property in Turkey, understanding the specific legal framework is paramount. Turkish inheritance law, influenced by civil law principles, has distinct rules that differ significantly from many common law jurisdictions. This guide aims to demystify the process, highlighting key legal considerations, potential pitfalls, and the indispensable role of expert legal counsel.

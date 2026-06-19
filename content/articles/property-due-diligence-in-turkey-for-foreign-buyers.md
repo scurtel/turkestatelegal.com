@@ -1,16 +1,17 @@
 ---
-title: "Property Due Diligence in Turkey for Foreign Buyers"
+title: Property Due Diligence in Turkey for Foreign Buyers
 slug: property-due-diligence-in-turkey-for-foreign-buyers
-seoTitle: "Property Due Diligence in Turkey | Foreign Buyer Checklist & Safety"
+seoTitle: Property Due Diligence in Turkey for Foreign Buyers Guide
 seoDescription: >-
-  High-intent due diligence for foreigners buying in Turkey: title checks, debts, restrictions, project status, and safer payments.
+  Essential property due diligence for foreign buyers in Turkey. Covers title
+  deeds, debts, legal restrictions, and project status to ensure a safe
 excerpt: >-
-  Transaction-safety focused verification: what to confirm before you pay, and how to reduce legal and financial exposure.
-coverImage: ""
+  Transaction-safety focused verification: what to confirm before you pay, and
+  how to reduce legal and financial exposure.
+coverImage: ''
 publishedAt: '2026-04-21'
-category: "Due Diligence"
+category: Due Diligence
 ---
-
 # Ensuring Transaction Safety: Your Due Diligence Workflow for Buying Property in Turkey
 
 Turkey continues to captivate international buyers with its vibrant culture, stunning landscapes, and promising real estate opportunities. Whether you're seeking a holiday home, a permanent residence, or an investment, the prospect of owning property here is undoubtedly appealing. However, as with any significant international transaction, the process demands careful attention and a methodical approach to ensure your investment is secure and your peace of mind is preserved.

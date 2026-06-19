@@ -1,18 +1,18 @@
 ---
-title: >-
-  Real Estate Due Diligence in Turkey: Legal Checklist for Foreign Investors
+title: 'Real Estate Due Diligence in Turkey: Legal Checklist for Foreign Investors'
 slug: real-estate-due-diligence-turkey-foreign-investors
-seoTitle: "Real Estate Due Diligence in Turkey | Legal Checklist"
+seoTitle: 'Real Estate Due Diligence Turkey: Legal Guide for Foreigners'
 seoDescription: >-
-  A legal due diligence checklist for foreign investors buying property in Turkey, covering title deed checks, zoning, debts, tenants, permits and contract risks.
+  Foreign investors buying property in Turkey need this legal due diligence
+  checklist. Verify title deeds, zoning, debts, permits, and minimize risks.
 excerpt: >-
-  A foreign-investor due diligence checklist: Tapu, encumbrances, zoning, tenants, debts, permits, and contracts before you pay.
-coverImage: ""
+  A foreign-investor due diligence checklist: Tapu, encumbrances, zoning,
+  tenants, debts, permits, and contracts before you pay.
+coverImage: ''
 publishedAt: '2026-06-10'
-category: "Due Diligence"
+category: Due Diligence
 author: Turks Estate Legal
 ---
-
 # Real Estate Due Diligence in Turkey: Legal Checklist for Foreign Investors
 
 Investing in Turkish real estate offers significant opportunities for foreign buyers, but like any major international purchase, it comes with its own set of legal complexities. Conducting thorough real estate due diligence in Turkey is not merely a recommendation; it's an essential safeguard for any foreign investor. This comprehensive legal checklist aims to guide you through the critical steps to protect your investment and avoid unforeseen complications, ensuring a secure transaction. Engaging an independent Turkish property lawyer is crucial throughout this process to navigate the intricacies of local law.
@@ -119,4 +119,3 @@ The duration varies depending on the property's complexity and the availability 
 ---
 
 *This article is for general informational purposes only and does not constitute legal advice. Each case should be assessed according to its own facts and current legislation.*
-

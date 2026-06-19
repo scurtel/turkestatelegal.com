@@ -1,16 +1,18 @@
 ---
-title: "What Documents Do Foreign Buyers Need to Buy Property in Turkey?"
+title: What Documents Do Foreign Buyers Need to Buy Property in Turkey?
 slug: what-documents-do-foreign-buyers-need-to-buy-property-in-turkey
-seoTitle: "What Documents Foreign Buyers Need in Turkey Property Purchases"
+seoTitle: Required Documents for Foreign Property Buyers in Turkey
 seoDescription: >-
-  A practical document-readiness guide for foreigners buying property in Turkey, including why preparation matters and where legal guidance prevents delays.
+  Understand essential documents for foreign buyers purchasing property in
+  Turkey. This guide details required paperwork, preparation tips, and legal
+  review
 excerpt: >-
-  Understand which documents are commonly required when buying property in Turkey as a foreigner, and how strong preparation reduces transaction risk.
-coverImage: ""
+  Understand which documents are commonly required when buying property in
+  Turkey as a foreigner, and how strong preparation reduces transaction risk.
+coverImage: ''
 publishedAt: '2026-04-23'
 category: documents
 ---
-
 # What Documents Do Foreign Buyers Need to Buy Property in Turkey?
 
 Buying property in Turkey as a foreign national is often more straightforward than many people expect, but the process can still slow down quickly if document preparation is weak. In most failed or delayed transactions, the issue is not the property itself. It is missing paperwork, incorrect translations, expired identity documents, or timing problems between banks, notaries, and official offices.

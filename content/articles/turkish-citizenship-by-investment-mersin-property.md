@@ -1,17 +1,18 @@
 ---
-title: "Turkish Citizenship by Investment Through Property in Mersin"
+title: Turkish Citizenship by Investment Through Property in Mersin
 slug: turkish-citizenship-by-investment-mersin-property
-seoTitle: "Turkish Citizenship by Investment in Mersin Property"
+seoTitle: 'Turkish Citizenship by Investment: Mersin Property Law'
 seoDescription: >-
-  A legal guide for foreigners considering Turkish citizenship by investing in Mersin real estate worth at least 400,000 USD.
+  Understand Turkish citizenship by investment through Mersin property. This
+  legal guide details the $400,000 threshold, requirements, due diligence, and
 excerpt: >-
-  Citizenship-by-investment through Mersin property: USD 400,000 threshold, three-year şerh, valuation, payments, and risks that can block applications.
-coverImage: ""
+  Citizenship-by-investment through Mersin property: USD 400,000 threshold,
+  three-year şerh, valuation, payments, and risks that can block applications.
+coverImage: ''
 publishedAt: '2026-06-11'
-category: "Citizenship by Investment"
+category: Citizenship by Investment
 author: Turks Estate Legal
 ---
-
 # Turkish Citizenship by Investment Through Property in Mersin
 
 Mersin, a vibrant port city on Turkey's Mediterranean coast, is increasingly drawing the attention of foreign investors. Beyond its strategic location and growing economy, Mersin offers a compelling route for those seeking Turkish citizenship through real estate investment. Navigating this process requires meticulous attention to legal details and a clear understanding of the requirements set forth by Turkish law.
@@ -84,4 +85,3 @@ Yes, a single lawyer or legal firm specializing in real estate and immigration l
 ---
 
 *This article is for general informational purposes only and does not constitute legal advice. Each case should be assessed according to its own facts and current legislation.*
-

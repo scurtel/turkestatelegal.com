@@ -1,14 +1,15 @@
 ---
 title: Buying Property in Turkey with Power of Attorney
 slug: buying-property-in-turkey-with-power-of-attorney
-seoTitle: 'Buying Property in Turkey with Power of Attorney: A Foreign Buyer Guide'
+seoTitle: Buying Property in Turkey Remotely with Power of Attorney
 seoDescription: >-
-  Learn when power of attorney can help foreign buyers purchase remotely and
-  what legal safeguards to include.
+  Foreign buyers can purchase property in Turkey remotely using Power of
+  Attorney. This guide covers its legal scope, limitations, and essential
+  safeguards.
 excerpt: >-
   A practical guide to using POA responsibly for remote property transactions in
   Turkey.
-coverImage: ""
+coverImage: ''
 publishedAt: '2026-04-21'
 category: Remote Purchase
 ---

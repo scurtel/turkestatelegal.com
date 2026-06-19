@@ -1,14 +1,20 @@
 ---
-title: "Turkish Inheritance Law for Foreigners: Navigating Assets & Heirs"
+title: 'Turkish Inheritance Law for Foreigners: Navigating Assets & Heirs'
 slug: inheritance-of-foreigners-in-turkey
-seoTitle: "Turkish Inheritance Law for Foreigners: Navigating Assets & Heirs"
-seoDescription: "Understand Turkish inheritance law for foreigners. Learn about property, heirs, wills, taxes, and the inheritance process. Get expert legal guidance for your assets in Turkey."
-excerpt: "The prospect of dealing with inheritance matters can be daunting, even in one's home country, but it becomes significantly more complex when assets are located in a foreign jurisdiction. For foreigners owning property or other assets in Turkey, understanding the nuances of Turkish inheritance law is not just benefic..."
-coverImage: ""
+seoTitle: 'Turkish Inheritance Law for Foreigners: Assets & Heirs'
+seoDescription: >-
+  Navigate Turkish inheritance law for foreigners. Understand property, heirs,
+  wills, taxes, and the inheritance process for assets in Turkey. Get clear
+excerpt: >-
+  The prospect of dealing with inheritance matters can be daunting, even in
+  one's home country, but it becomes significantly more complex when assets are
+  located in a foreign jurisdiction. For foreigners owning property or other
+  assets in Turkey, understanding the nuances of Turkish inheritance law is not
+  just benefic...
+coverImage: ''
 publishedAt: '2026-05-14'
-category: "Inheritance Law"
+category: Inheritance Law
 ---
-
 # Navigating Inheritance Law in Turkey for Foreigners
 
 The prospect of dealing with inheritance matters can be daunting, even in one's home country, but it becomes significantly more complex when assets are located in a foreign jurisdiction. For foreigners owning property or other assets in Turkey, understanding the nuances of Turkish inheritance law is not just beneficial, but absolutely essential. Turkey’s legal framework, while designed to be clear, interacts with international private law principles, creating a unique set of challenges and considerations for non-Turkish citizens. This guide aims to demystify the process, highlight key legal principles, and underscore why expert legal assistance is indispensable.

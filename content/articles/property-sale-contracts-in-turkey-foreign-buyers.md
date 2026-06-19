@@ -1,17 +1,19 @@
 ---
-title: "Property Sale Contracts in Turkey: What Foreign Buyers Should Know"
+title: 'Property Sale Contracts in Turkey: What Foreign Buyers Should Know'
 slug: property-sale-contracts-in-turkey-foreign-buyers
-seoTitle: "Property Sale Contracts in Turkey | Foreign Buyer Guide"
+seoTitle: 'Turkey Property Sale Contracts: Legal Guide for Foreigners'
 seoDescription: >-
-  A guide for foreign buyers on Turkish property sale contracts, deposits, preliminary agreements, notary procedures, penalty clauses and title deed transfer.
+  Understand Turkish property sale contracts for foreign buyers. Learn about
+  deposits, preliminary agreements, notary procedures, penalty clauses, and
+  title
 excerpt: >-
-  How Turkish sale contracts work: deposits, preliminary agreements, notary forms, penalties, and why Tapu transfer creates ownership.
-coverImage: ""
+  How Turkish sale contracts work: deposits, preliminary agreements, notary
+  forms, penalties, and why Tapu transfer creates ownership.
+coverImage: ''
 publishedAt: '2026-06-10'
-category: "Contracts"
+category: Contracts
 author: Turks Estate Legal
 ---
-
 # Property Sale Contracts in Turkey: What Foreign Buyers Should Know
 
 Buying property in a foreign country involves navigating unfamiliar legal frameworks. For foreign buyers in Turkey, understanding the intricacies of property sale contracts is paramount. These documents define the terms of your purchase, outline obligations, and protect your interests, making informed decision-making essential before committing to any agreement.
@@ -86,4 +88,3 @@ The official transfer of property ownership in Turkey takes place at the Land Re
 ---
 
 *This article is for general informational purposes only and does not constitute legal advice. Each case should be assessed according to its own facts and current legislation.*
-

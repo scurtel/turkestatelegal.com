@@ -1,14 +1,17 @@
 ---
-title: "Buying Property in Antalya as a Foreigner"
+title: Buying Property in Antalya as a Foreigner
 slug: buying-property-in-antalya-as-a-foreigner
-seoTitle: "Buying Property in Antalya as a Foreigner: Coastal Lifestyle and Legal Guide"
-seoDescription: "A practical guide for foreign buyers in Antalya, covering holiday-home demand, seasonal usage planning, and legal verification priorities."
-excerpt: "A coastal-focused Antalya guide for foreign buyers balancing lifestyle goals, seasonal use, and legal risk control."
-coverImage: ""
-publishedAt: "2026-04-21"
-category: "City Guide"
+seoTitle: 'Antalya Property for Foreigners: Essential Legal Guide'
+seoDescription: >-
+  A practical guide for foreign buyers in Antalya, covering holiday-home demand,
+  seasonal usage planning, and crucial legal verification priorities.
+excerpt: >-
+  A coastal-focused Antalya guide for foreign buyers balancing lifestyle goals,
+  seasonal use, and legal risk control.
+coverImage: ''
+publishedAt: '2026-04-21'
+category: City Guide
 ---
-
 # Buying Property in Antalya as a Foreigner
 
 Antalya, a dazzling jewel on Turkey's Mediterranean coast, has long captivated the hearts of international visitors. Beyond its pristine beaches, ancient ruins, and vibrant city life, it has emerged as a prime destination for foreigners seeking to invest in property, particularly for those envisioning a second home or a lucrative seasonal rental opportunity. The city's unique blend of natural beauty, modern infrastructure, and a welcoming expat community makes it distinct from other Turkish cities in its appeal to international buyers.

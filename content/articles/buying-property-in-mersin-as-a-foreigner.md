@@ -1,14 +1,17 @@
 ---
-title: "Buying Property in Mersin as a Foreigner"
+title: Buying Property in Mersin as a Foreigner
 slug: buying-property-in-mersin-as-a-foreigner
-seoTitle: "Buying Property in Mersin as a Foreigner: Affordability and Growth Guide"
-seoDescription: "Understand how foreigners can approach Mersin property with practical legal checks, affordability planning, and development-led risk control."
-excerpt: "A practical Mersin guide focused on affordability, development momentum, and legal checks for safer decisions."
-coverImage: ""
-publishedAt: "2026-04-21"
-category: "City Guide"
+seoTitle: 'Mersin Property Acquisition for Foreigners: Legal Guide'
+seoDescription: >-
+  Understand how foreigners can approach Mersin property with practical legal
+  checks, affordability planning, and development-led risk control.
+excerpt: >-
+  A practical Mersin guide focused on affordability, development momentum, and
+  legal checks for safer decisions.
+coverImage: ''
+publishedAt: '2026-04-21'
+category: City Guide
 ---
-
 # Buying Property in Mersin as a Foreigner
 
 Mersin, a vibrant port city nestled on Turkey's southeastern Mediterranean coast, is increasingly emerging as an attractive destination for foreign property investors. While larger, more established cities like Istanbul, Ankara, and Antalya often dominate the headlines, Mersin offers a compelling and often overlooked proposition rooted in its relative affordability, significant development-led opportunities, and a strong value-for-money proposition. For foreigners considering property acquisition in Turkey, understanding Mersin's unique market dynamics and navigating the legal landscape is crucial to making an informed, secure, and potentially lucrative investment.

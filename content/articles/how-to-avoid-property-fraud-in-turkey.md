@@ -1,14 +1,14 @@
 ---
 title: How to Avoid Property Fraud in Turkey
 slug: how-to-avoid-property-fraud-in-turkey
-seoTitle: 'How to Avoid Property Fraud in Turkey: Warning Signs for Foreign Buyers'
+seoTitle: 'Avoid Property Fraud in Turkey: Guide for Foreign Buyers'
 seoDescription: >-
-  Protect your purchase by learning common fraud patterns, verification habits,
-  and safer payment practices.
+  Protect your property investment in Turkey. Understand common fraud scenarios,
+  red flags, and essential legal checks. This guide empowers foreign buyers
 excerpt: >-
   A prevention-focused guide to red flags, document checks, and safer
   transaction behavior.
-coverImage: ""
+coverImage: ''
 publishedAt: '2026-04-21'
 category: Fraud Prevention
 ---

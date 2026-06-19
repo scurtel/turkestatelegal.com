@@ -1,15 +1,14 @@
 ---
 title: Inheritance Law in Turkey for Foreign Property Owners
 slug: inheritance-law-in-turkey-for-foreign-property-owners
-seoTitle: >-
-  Inheritance Law in Turkey for Foreign Property Owners | Tapu, Heirs & Wills
+seoTitle: 'Inheritance Law in Turkey: Guide for Foreign Property Owners'
 seoDescription: >-
-  How Turkish inheritance law applies to foreign owners of Turkish property:
-  heirs, reserved shares, wills, certificates, tax, and practical steps.
+  Navigating Turkish inheritance law for foreign property owners. Explore rules
+  on heirs, reserved shares, wills, certificates, tax, and estate planning
 excerpt: >-
   What foreign property owners and their families should know about Turkish
   inheritance rules, certificates of inheritance, and estate planning.
-coverImage: ""
+coverImage: ''
 publishedAt: '2026-06-02'
 category: Inheritance Law
 author: Turks Estate Legal

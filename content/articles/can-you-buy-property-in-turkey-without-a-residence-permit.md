@@ -1,16 +1,17 @@
 ---
-title: "Can You Buy Property in Turkey Without a Residence Permit?"
+title: Can You Buy Property in Turkey Without a Residence Permit?
 slug: can-you-buy-property-in-turkey-without-a-residence-permit
-seoTitle: "Can Foreigners Buy Property in Turkey Without Residence Permit?"
+seoTitle: Buy Property in Turkey Without Residence Permit? Legal Guide
 seoDescription: >-
-  A clear guide for foreigners on whether a residence permit is required to buy property in Turkey, and the practical legal points to consider.
+  Guide for foreigners: Is a residence permit required to buy property in
+  Turkey? Understand the legal distinction between ownership and residence.
 excerpt: >-
-  Learn the difference between owning property and holding residence status in Turkey, with practical steps to reduce confusion and delays.
-coverImage: ""
+  Learn the difference between owning property and holding residence status in
+  Turkey, with practical steps to reduce confusion and delays.
+coverImage: ''
 publishedAt: '2026-04-23'
 category: residence-permit
 ---
-
 # Can You Buy Property in Turkey Without a Residence Permit?
 
 This is one of the most common questions from international buyers: **Do I need a Turkish residence permit before I can buy property?**  

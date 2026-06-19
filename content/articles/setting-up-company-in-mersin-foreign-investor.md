@@ -1,17 +1,19 @@
 ---
-title: "Setting Up a Company in Mersin as a Foreign Investor"
+title: Setting Up a Company in Mersin as a Foreign Investor
 slug: setting-up-company-in-mersin-foreign-investor
-seoTitle: "Setting Up a Company in Mersin as a Foreign Investor"
+seoTitle: 'Foreign Investors: Setting Up a Company in Mersin, Turkey'
 seoDescription: >-
-  Legal guide for foreigners who want to establish a company in Mersin for real estate, trade, logistics or investment operations.
+  Comprehensive legal guide for foreign investors establishing a company in
+  Mersin, Turkey. Learn about entity types, tax, work permits, and compliance
+  risks
 excerpt: >-
-  Foreign investors establishing a company in Mersin: entity types, tax number, banking, property holding, work permit and compliance risks.
-coverImage: ""
+  Foreign investors establishing a company in Mersin: entity types, tax number,
+  banking, property holding, work permit and compliance risks.
+coverImage: ''
 publishedAt: '2026-06-11'
-category: "Business & Investment"
+category: Business & Investment
 author: Turks Estate Legal
 ---
-
 # Setting Up a Company in Mersin as a Foreign Investor
 
 Mersin, a vibrant port city on Turkey's Mediterranean coast, is rapidly emerging as a compelling destination for foreign investors and expats. Its strategic location, robust infrastructure, and growing economy present significant opportunities for business expansion and new ventures. For those considering establishing a commercial presence in Turkey, understanding the legal framework for company formation in Mersin is crucial.
@@ -116,4 +118,3 @@ Yes, owning a company in Turkey does not automatically grant you a work permit. 
 ---
 
 *This article is for general informational purposes only and does not constitute legal advice. Each case should be assessed according to its own facts and current legislation.*
-

@@ -1,17 +1,18 @@
 ---
-title: "Turkish Citizenship by Real Estate: Step-by-Step Legal Guide"
+title: 'Turkish Citizenship by Real Estate: Step-by-Step Legal Guide'
 slug: turkish-citizenship-by-real-estate-step-by-step-legal-guide
-seoTitle: >-
-  Turkish Citizenship by Real Estate | Step-by-Step Legal Guide for Foreigners
+seoTitle: 'Turkish Citizenship by Real Estate: Step-by-Step Legal Guide'
 seoDescription: >-
-  A structured legal overview for foreigners: how real estate may connect to Turkish citizenship processes, documentation logic, risks, and when to seek counsel.
+  A step-by-step legal guide for foreigners on Turkish Citizenship by Real
+  Estate. Covers precise application steps, compliance, documentation, and
+  expert
 excerpt: >-
-  Process-focused guidance on citizenship-linked real estate: steps, compliance mindset, and risk awareness without hype.
-coverImage: ""
+  Process-focused guidance on citizenship-linked real estate: steps, compliance
+  mindset, and risk awareness without hype.
+coverImage: ''
 publishedAt: '2026-04-21'
-category: "Citizenship by Real Estate"
+category: Citizenship by Real Estate
 ---
-
 # Turkish Citizenship by Real Estate: Step-by-Step Legal Guide
 
 For foreign individuals considering Turkish citizenship through real estate acquisition, the journey extends far beyond a simple property purchase. It involves a meticulous legal and administrative process that demands precision, compliance, and a deep understanding of both property law and immigration regulations. This guide outlines the critical legal steps and considerations, emphasizing the importance of expert counsel to navigate potential complexities and ensure a robust application.

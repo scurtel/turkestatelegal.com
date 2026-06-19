@@ -1,16 +1,18 @@
 ---
-title: "Is Buying Property in Turkey Better for Residence Permit or Citizenship Goals?"
+title: Is Buying Property in Turkey Better for Residence Permit or Citizenship Goals?
 slug: is-buying-property-in-turkey-better-for-residence-permit-or-citizenship-goals
-seoTitle: "Residence Permit vs Citizenship Goals in Turkey Property Buying"
+seoTitle: 'Buying Property in Turkey: Residence Permit or Citizenship?'
 seoDescription: >-
-  A decision-focused guide for foreigners comparing residence permit and citizenship goals when buying property in Turkey.
+  Foreign buyers compare residence permit & citizenship goals for property in
+  Turkey. Align your purchase with your true objective and avoid common
+  mistakes.
 excerpt: >-
-  Compare residence-first and citizenship-first property strategies in Turkey, including process logic, risk points, and legal planning priorities.
-coverImage: ""
+  Compare residence-first and citizenship-first property strategies in Turkey,
+  including process logic, risk points, and legal planning priorities.
+coverImage: ''
 publishedAt: '2026-04-23'
 category: citizenship-residence-comparison
 ---
-
 # Is Buying Property in Turkey Better for Residence Permit or Citizenship Goals?
 
 Many foreign buyers begin with one simple idea: “I want to buy in Turkey.”  

@@ -1,18 +1,18 @@
 ---
-title: >-
-  Turkish Title Deed Explained: What Foreign Buyers Should Check Before Signing
+title: 'Turkish Title Deed Explained: What Foreign Buyers Should Check Before Signing'
 slug: turkish-title-deed-explained-foreign-buyers
-seoTitle: "Turkish Title Deed Explained | Tapu Guide for Foreign Buyers"
+seoTitle: 'Turkish Title Deed: Essential Checks for Foreign Buyers'
 seoDescription: >-
-  Learn what a Turkish title deed shows, how foreign buyers should review Tapu records, and which legal risks must be checked before buying property in Turkey.
+  Understand what a Turkish title deed (Tapu) shows. Learn how foreign buyers
+  can review records and identify legal risks before buying property in Turkey.
 excerpt: >-
-  What the Tapu shows, why it governs ownership, and which registry red flags foreign buyers should verify before signing.
-coverImage: ""
+  What the Tapu shows, why it governs ownership, and which registry red flags
+  foreign buyers should verify before signing.
+coverImage: ''
 publishedAt: '2026-06-10'
-category: "Title Deed"
+category: Title Deed
 author: Turks Estate Legal
 ---
-
 # Turkish Title Deed Explained: What Foreign Buyers Should Check Before Signing
 
 Buying property in a foreign country requires careful attention to legal documents, and Turkey is no exception. For foreign buyers, understanding the Turkish title deed, known as the Tapu, is paramount. This document is the definitive proof of ownership and contains vital information that must be thoroughly checked before any commitment is made.
@@ -88,4 +88,3 @@ The actual transfer of the Tapu at the Land Registry office can often be complet
 ---
 
 *This article is for general informational purposes only and does not constitute legal advice. Each case should be assessed according to its own facts and current legislation.*
-

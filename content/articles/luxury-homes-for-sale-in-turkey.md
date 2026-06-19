@@ -1,18 +1,17 @@
 ---
 title: 'Luxury Homes for Sale in Turkey: A Foreign Buyer Guide'
 slug: luxury-homes-for-sale-in-turkey
-seoTitle: Luxury Homes in Turkey for Foreign Buyers | Due Diligence Guide
+seoTitle: 'Luxury Homes in Turkey: A Foreign Buyer''s Legal Guide'
 seoDescription: >-
-  What foreign buyers should expect when purchasing premium residential property
-  in Turkey, from title checks to practical closing considerations.
+  Foreign buyers' guide to luxury property in Turkey. Understand what to verify,
+  manage expectations, and ensure a professional purchase process to title
 excerpt: >-
   A calm, practical guide to high-end residential purchases: expectations,
   documentation, and where mistakes get expensive.
-coverImage: ""
+coverImage: ''
 publishedAt: '2026-04-21'
 category: Luxury Property
 ---
-
 # Luxury Homes for Sale in Turkey
 
 If you are drawn to Turkey for climate, coastline, and relative value compared with many European markets, the luxury segment can look especially tempting. Listings often promise sea views, private pools, smart-home systems, and resort-style compounds. That is all real—but the margin for error is also larger, because price tags, renovation scope, and contract complexity all scale up together.

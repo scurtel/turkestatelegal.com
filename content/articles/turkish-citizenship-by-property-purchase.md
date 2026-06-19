@@ -1,14 +1,20 @@
 ---
-title: "Turkish Citizenship by Property Purchase: Legal Pathway"
+title: 'Turkish Citizenship by Property Purchase: Legal Pathway'
 slug: turkish-citizenship-by-property-purchase
-seoTitle: "Turkish Citizenship by Property Purchase: Legal Pathway"
-seoDescription: "Explore Turkish citizenship by property purchase. Our guide details eligibility, process, and why expert legal guidance is crucial for a secure investment and second passport."
-excerpt: "Turkey has emerged as an increasingly attractive destination for foreign investors seeking both real estate opportunities and the benefits of Turkish citizenship. The Turkish Citizenship by Investment (CBI) program, particularly through property acquisition, offers a streamlined route to obtaining a second passport ..."
-coverImage: ""
+seoTitle: 'Turkish Citizenship by Property: Guide for Foreign Investors'
+seoDescription: >-
+  Get a clear overview of Turkish citizenship by property purchase. Learn about
+  eligibility, the application process, and why legal guidance is key for
+excerpt: >-
+  Turkey has emerged as an increasingly attractive destination for foreign
+  investors seeking both real estate opportunities and the benefits of Turkish
+  citizenship. The Turkish Citizenship by Investment (CBI) program, particularly
+  through property acquisition, offers a streamlined route to obtaining a second
+  passport ...
+coverImage: ''
 publishedAt: '2026-05-14'
-category: "Citizenship by Investment"
+category: Citizenship by Investment
 ---
-
 # Turkish Citizenship by Property Purchase: Your Legal Pathway
 
 Turkey has emerged as an increasingly attractive destination for foreign investors seeking both real estate opportunities and the benefits of Turkish citizenship. The Turkish Citizenship by Investment (CBI) program, particularly through property acquisition, offers a streamlined route to obtaining a second passport and establishing a presence in a vibrant, strategically located country. However, navigating the intricacies of Turkish real estate law and citizenship regulations requires a profound understanding of the legal landscape. This article aims to provide a comprehensive overview for foreign nationals considering this significant investment, emphasizing the critical role of expert legal guidance.

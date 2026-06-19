@@ -1,17 +1,19 @@
 ---
-title: "Residence Permit in Turkey Through Property Ownership in Mersin"
+title: Residence Permit in Turkey Through Property Ownership in Mersin
 slug: residence-permit-property-ownership-mersin
-seoTitle: "Residence Permit Through Property Ownership in Mersin"
+seoTitle: 'Turkey Residence Permit: Property Ownership in Mersin'
 seoDescription: >-
-  Learn how property ownership in Mersin may support a Turkish residence permit application and what foreign buyers should know.
+  Understand how property ownership in Mersin supports a Turkish residence
+  permit application. Get clear legal guidance on requirements and the process
+  for
 excerpt: >-
-  How Mersin property ownership may support a short-term residence permit—and why ownership alone does not equal residency approval.
-coverImage: ""
+  How Mersin property ownership may support a short-term residence permit—and
+  why ownership alone does not equal residency approval.
+coverImage: ''
 publishedAt: '2026-06-11'
-category: "Residence Permit"
+category: Residence Permit
 author: Turks Estate Legal
 ---
-
 # Residence Permit in Turkey Through Property Ownership in Mersin
 
 Mersin, with its vibrant economy, strategic location, and appealing coastal lifestyle, has become a compelling destination for foreign investors and expats considering a move to Turkey. While investing in real estate here offers numerous benefits, it is crucial to understand the legal framework surrounding residence permits. Owning property in Mersin can indeed serve as a strong foundation for a residence permit application, but it is not an automatic grant of residency.
@@ -109,4 +111,3 @@ An initial short-term residence permit based on property ownership is typically 
 ---
 
 *This article is for general informational purposes only and does not constitute legal advice. Each case should be assessed according to its own facts and current legislation.*
-

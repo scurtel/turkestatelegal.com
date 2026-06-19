@@ -1,17 +1,18 @@
 ---
-title: "Best Areas in Mersin for Foreign Property Investors"
+title: Best Areas in Mersin for Foreign Property Investors
 slug: best-areas-in-mersin-for-foreign-property-investors
-seoTitle: "Best Areas in Mersin for Foreign Property Investment"
+seoTitle: Best Areas in Mersin for Foreign Property Investment
 seoDescription: >-
-  Discover key Mersin districts for foreign property buyers and learn what legal checks should be done before investing.
+  Discover key Mersin districts for foreign property buyers. Learn about legal
+  checks, due diligence, and residence considerations for your investment.
 excerpt: >-
-  District-by-district look at Mezitli, Yenişehir, Erdemli and port-adjacent areas—plus due diligence, rental, resale and residence considerations.
-coverImage: ""
+  District-by-district look at Mezitli, Yenişehir, Erdemli and port-adjacent
+  areas—plus due diligence, rental, resale and residence considerations.
+coverImage: ''
 publishedAt: '2026-06-11'
-category: "Mersin Investment"
+category: Mersin Investment
 author: Turks Estate Legal
 ---
-
 # Best Areas in Mersin for Foreign Property Investors
 
 Mersin, a vibrant port city on Turkey's Mediterranean coast, is increasingly attracting foreign investors and expatriates due to its strategic location, developing infrastructure, and diverse real estate market. As you consider investing in property here, understanding the distinct characteristics of each district is crucial for aligning your investment with your personal and financial goals.
@@ -77,4 +78,3 @@ No, not all properties can be used for residence permit applications. Generally,
 ---
 
 *This article is for general informational purposes only and does not constitute legal advice. Each case should be assessed according to its own facts and current legislation.*
-

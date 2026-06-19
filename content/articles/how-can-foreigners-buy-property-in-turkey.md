@@ -1,14 +1,14 @@
 ---
 title: How Can Foreigners Buy Property in Turkey?
 slug: how-can-foreigners-buy-property-in-turkey
-seoTitle: How Can Foreigners Buy Property in Turkey? | Legal Steps & Limits
+seoTitle: 'Foreigners Buying Property in Turkey: Legal Steps Guide'
 seoDescription: >-
-  A practical guide for foreign buyers: eligibility, title deed transfer, taxes,
-  common limits, and how to buy property in Turkey safely.
+  Understand how foreigners buy property in Turkey. This guide details legal
+  steps, eligibility, title deed transfer, taxes, limits, and secure Tapu
 excerpt: >-
   Step-by-step overview of how foreigners can purchase residential property in
   Turkey, from eligibility checks to Tapu registration.
-coverImage: ""
+coverImage: ''
 publishedAt: '2026-06-02'
 category: Buying Process
 author: Turks Estate Legal

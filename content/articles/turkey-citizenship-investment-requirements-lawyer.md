@@ -1,14 +1,20 @@
 ---
-title: "Turkish Citizenship by Investment: Requirements & Lawyer Guide"
+title: 'Turkish Citizenship by Investment: Requirements & Lawyer Guide'
 slug: turkey-citizenship-investment-requirements-lawyer
-seoTitle: "Turkish Citizenship by Investment: Requirements & Lawyer Guide"
-seoDescription: "Secure Turkish Citizenship by Investment. Explore requirements, real estate, and application process. Expert legal guidance ensures a smooth, compliant path."
-excerpt: "Turkey's Citizenship by Investment (CBI) program offers a compelling pathway for foreign nationals seeking a second passport, providing access to a vibrant economy, strategic geopolitical location, and a rich cultural heritage. While the prospect of obtaining Turkish citizenship through investment is attractive, the..."
-coverImage: ""
+seoTitle: 'Turkish Citizenship by Investment: Requirements Guide'
+seoDescription: >-
+  Learn Turkish Citizenship by Investment requirements, the application process,
+  and property options. Essential legal guidance for foreign nationals.
+excerpt: >-
+  Turkey's Citizenship by Investment (CBI) program offers a compelling pathway
+  for foreign nationals seeking a second passport, providing access to a vibrant
+  economy, strategic geopolitical location, and a rich cultural heritage. While
+  the prospect of obtaining Turkish citizenship through investment is
+  attractive, the...
+coverImage: ''
 publishedAt: '2026-05-14'
-category: "Citizenship by Investment"
+category: Citizenship by Investment
 ---
-
 # Navigating Turkish Citizenship by Investment: Requirements & Legal Counsel
 
 Turkey's Citizenship by Investment (CBI) program offers a compelling pathway for foreign nationals seeking a second passport, providing access to a vibrant economy, strategic geopolitical location, and a rich cultural heritage. While the prospect of obtaining Turkish citizenship through investment is attractive, the process involves intricate legal requirements, significant financial commitments, and potential risks that necessitate expert guidance. Understanding the precise eligibility criteria, navigating the application process, and conducting thorough due diligence are paramount to a successful outcome. This article delves into the core requirements of the Turkish CBI program and underscores why engaging a qualified Turkish real estate and immigration lawyer is not merely beneficial, but often indispensable.

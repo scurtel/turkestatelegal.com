@@ -1,14 +1,18 @@
 ---
-title: "Off-Plan Property in Turkey: Risks, Benefits & Legal Guide"
+title: 'Off-Plan Property in Turkey: Risks, Benefits & Legal Guide'
 slug: off-plan-property-turkey
-seoTitle: "Off-Plan Property in Turkey: Risks, Benefits & Legal Guide"
-seoDescription: "Considering off-plan property in Turkey? Discover the benefits, risks, and essential legal due diligence needed for a secure investment. Protect your purchase with expert guidance."
-excerpt: "Considering off-plan property in Turkey? Discover the benefits, risks, and essential legal due diligence needed for a secure investment. Protect your purchase with expert guidance."
-coverImage: ""
+seoTitle: 'Off-Plan Property in Turkey: Risks, Benefits & Legal Guide'
+seoDescription: >-
+  Understand off-plan property in Turkey: explore benefits, risks, and crucial
+  legal due diligence for foreign buyers. Ensure a secure investment.
+excerpt: >-
+  Considering off-plan property in Turkey? Discover the benefits, risks, and
+  essential legal due diligence needed for a secure investment. Protect your
+  purchase with expert guidance.
+coverImage: ''
 publishedAt: '2026-05-14'
-category: "Off-Plan Risk"
+category: Off-Plan Risk
 ---
-
 Navigating Off-Plan Property Purchases in Turkey
 
 Investing in off-plan property in Turkey can present an attractive opportunity for foreign buyers. The allure often lies in potentially lower entry prices, the ability to customize finishes, and the prospect of capital appreciation as the project develops and the market matures. However, this investment avenue also carries inherent risks that, if not properly managed, can lead to significant financial and legal complications. Understanding these risks and engaging in rigorous legal due diligence is paramount for a secure and successful transaction.

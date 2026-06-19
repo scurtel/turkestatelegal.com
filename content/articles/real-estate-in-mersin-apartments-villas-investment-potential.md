@@ -1,19 +1,17 @@
 ---
 title: 'Real Estate in Mersin: Apartments, Villas, and Investment Potential'
 slug: real-estate-in-mersin-apartments-villas-investment-potential
-seoTitle: Mersin Property for Foreigners | Apartments, Villas, and Potential
+seoTitle: 'Mersin Property for Foreigners: Apartments, Villas'
 seoDescription: >-
-  A segment-focused look at Mersin real estate for foreign buyers: typical
-  inventory, how apartments and villas differ locally, and cautious investment
-  framing.
+  Explore Mersin real estate for foreign buyers. Understand local apartment and
+  villa inventory, buyer behavior, and evaluate investment potential factually.
 excerpt: >-
   Beyond generic city marketing: how Mersin’s stock is shaped, what buyers
   compare in practice, and how to evaluate “potential” without hype.
-coverImage: ""
+coverImage: ''
 publishedAt: '2026-04-21'
 category: City Guide
 ---
-
 # Real Estate in Mersin: Apartments, Villas, and Investment Potential
 
 Mersin is often introduced to foreigners as an affordable Mediterranean city with strong logistics, agriculture-linked industry, and a long coastline. That introduction is broadly fair—but it is not enough to choose a segment. This article looks at Mersin through inventory and buyer behaviour: what you typically find in apartments versus villas, how local demand tends to express itself, and what “investment potential” should mean when you strip out brochure language.

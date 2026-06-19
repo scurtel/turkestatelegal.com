@@ -1,14 +1,15 @@
 ---
 title: Legal Checks Before Buying Property in Turkey
 slug: legal-checks-before-buying-property-in-turkey
-seoTitle: 'Legal Checks Before Buying Property in Turkey: Foreign Buyer Checklist'
+seoTitle: Due Diligence for Foreigners Buying Property in Turkey
 seoDescription: >-
-  Learn which legal checks to prioritize before signing or paying, and where
-  independent verification protects your investment.
+  Essential legal due diligence for foreign buyers purchasing property in
+  Turkey. Verify ownership, check for encumbrances, and secure your investment
+  before
 excerpt: >-
   A focused due diligence checklist covering ownership, encumbrances, permits,
   and contract clarity.
-coverImage: ""
+coverImage: ''
 publishedAt: '2026-04-21'
 category: Due Diligence
 ---

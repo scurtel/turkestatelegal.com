@@ -1,14 +1,14 @@
 ---
 title: 'Buying Off-Plan Property in Turkey: Legal Risks'
 slug: buying-off-plan-property-in-turkey-legal-risks
-seoTitle: 'Buying Off-Plan Property in Turkey: Legal Risks for Foreigners'
+seoTitle: 'Off-Plan Property Turkey: Legal Risks for Foreign Buyers'
 seoDescription: >-
-  Understand key legal and practical risks in off-plan property purchases in
-  Turkey and how to structure safer contracts.
+  Foreign buyers navigating off-plan property in Turkey face unique legal risks.
+  Learn about contracts, delivery delays, developer obligations, and securing
 excerpt: >-
   A risk-focused guide to contracts, delivery delays, developer obligations, and
   safer payment controls in off-plan deals.
-coverImage: ""
+coverImage: ''
 publishedAt: '2026-04-21'
 category: Off-Plan Risk
 ---

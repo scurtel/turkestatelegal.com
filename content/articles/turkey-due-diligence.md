@@ -1,14 +1,21 @@
 ---
-title: "Turkish Real Estate Due Diligence: A Foreigner's Essential Guide"
+title: 'Turkish Real Estate Due Diligence: A Foreigner''s Essential Guide'
 slug: turkey-due-diligence
-seoTitle: "Turkish Real Estate Due Diligence: A Foreigner's Essential Guide"
-seoDescription: "Investing in Turkish real estate? Legal due diligence is crucial for foreign buyers. Protect your investment by verifying title deeds, zoning, and finances. Secure your purchase with expert legal support."
-excerpt: "Turkey, with its vibrant culture, strategic location, and burgeoning economy, has long attracted foreign investors and individuals seeking to purchase real estate. From bustling city apartments in Istanbul to serene villas on the Aegean coast, the opportunities are diverse and often appealing. However, like any fore..."
-coverImage: ""
+seoTitle: 'Turkish Property Due Diligence: A Foreign Buyer''s Guide'
+seoDescription: >-
+  Foreigners buying Turkish property need legal due diligence. Understand
+  essential checks like title deeds, zoning, and finances to secure your
+  investment
+excerpt: >-
+  Turkey, with its vibrant culture, strategic location, and burgeoning economy,
+  has long attracted foreign investors and individuals seeking to purchase real
+  estate. From bustling city apartments in Istanbul to serene villas on the
+  Aegean coast, the opportunities are diverse and often appealing. However, like
+  any fore...
+coverImage: ''
 publishedAt: '2026-05-14'
-category: "Due Diligence"
+category: Due Diligence
 ---
-
 # Navigating Turkish Real Estate: The Power of Due Diligence
 
 Turkey, with its vibrant culture, strategic location, and burgeoning economy, has long attracted foreign investors and individuals seeking to purchase real estate. From bustling city apartments in Istanbul to serene villas on the Aegean coast, the opportunities are diverse and often appealing. However, like any foreign real estate market, navigating the complexities of Turkish property law requires careful consideration and a thorough understanding of the legal landscape. For foreigners, the process can be particularly intricate due to language barriers, unfamiliar legal procedures, and distinct cultural practices. This is precisely where the concept of legal due diligence becomes not just advisable, but absolutely essential.

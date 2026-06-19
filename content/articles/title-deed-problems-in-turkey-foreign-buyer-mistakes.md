@@ -1,17 +1,17 @@
 ---
-title: >-
-  Title Deed Problems in Turkey: How Foreign Buyers Can Avoid Costly Mistakes
+title: 'Title Deed Problems in Turkey: How Foreign Buyers Can Avoid Costly Mistakes'
 slug: title-deed-problems-in-turkey-foreign-buyer-mistakes
-seoTitle: "Title Deed Problems in Turkey | Foreign Buyer Risk Prevention"
+seoTitle: Avoiding Title Deed Problems in Turkey for Foreign Buyers
 seoDescription: >-
-  Common title deed pitfalls for foreigners in Turkey: misunderstandings, hidden issues, and how to reduce exposure before closing.
+  Foreign buyers in Turkey can face title deed problems. Learn common pitfalls,
+  hidden issues, and proactive steps to avoid costly mistakes and ensure a
 excerpt: >-
-  Problem-prevention focus: spotting deed-related risks early and keeping the transfer path under control.
-coverImage: ""
+  Problem-prevention focus: spotting deed-related risks early and keeping the
+  transfer path under control.
+coverImage: ''
 publishedAt: '2026-04-21'
-category: "Title Deed"
+category: Title Deed
 ---
-
 # Safeguarding Your Turkish Title Deed: Preventing Common Pitfalls for Foreign Buyers
 
 Turkey continues to captivate foreign investors and lifestyle buyers with its vibrant culture, stunning landscapes, and attractive property market. For many, owning a piece of this beautiful country is a dream. However, like any significant investment in a foreign jurisdiction, navigating the property acquisition process requires careful attention, particularly concerning the title deed, known as the *Tapu*.

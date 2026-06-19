@@ -1,18 +1,17 @@
 ---
-title: 'Turkey Residential Real Estate Market Analysis for 2026–2027'
+title: Turkey Residential Real Estate Market Analysis for 2026–2027
 slug: turkey-residential-real-estate-market-analysis-2026-2027
-seoTitle: Turkey Residential Property Market 2026–2027 | Foreign Buyer View
+seoTitle: Turkey Property Market Outlook 2026-2027 for Foreign Buyers
 seoDescription: >-
-  A balanced, forward-looking look at themes shaping Turkey’s housing market for
-  foreign buyers and investors—without price promises or hype.
+  An in-depth analysis of structural themes and demand patterns shaping Turkey's
+  residential real estate market for foreign buyers in 2026-2027. Understand
 excerpt: >-
   Themes, demand patterns, and decision habits for 2026–2027: useful framing,
   not a forecast dressed as certainty.
-coverImage: ""
+coverImage: ''
 publishedAt: '2026-04-21'
 category: Market Analysis
 ---
-
 # Turkey Residential Real Estate Market Analysis for 2026–2027
 
 If you are reading market commentary to decide whether to buy Turkish property next month, you are asking the wrong question of the wrong source. Housing markets are local, segmented, and sensitive to financing conditions, inflation expectations, currency moves, and policy shifts. What a serious foreign buyer needs in 2026 and 2027 is not a headline price prediction, but a clear way to interpret conditions and keep decisions reversible until the paperwork earns your confidence.

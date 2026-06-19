@@ -1,14 +1,20 @@
 ---
-title: "Buying Property in Turkey: Avoiding Common Pitfalls for Foreigners"
+title: 'Buying Property in Turkey: Avoiding Common Pitfalls for Foreigners'
 slug: buying-property-in-turkey-pitfalls
-seoTitle: "Buying Property in Turkey: Avoiding Common Pitfalls for Foreigners"
-seoDescription: "Navigating Turkish property can be complex. Discover common pitfalls foreign buyers face, from off-plan risks to legal intricacies, and learn how expert legal assistance secures your investment."
-excerpt: "Turkey has long captivated foreign investors and individuals seeking a new home or a strategic investment. Its vibrant culture, strategic location, and attractive real estate market offer compelling opportunities. However, like any foreign investment, purchasing property in Turkey comes with its own set of complexit..."
-coverImage: ""
+seoTitle: 'Buying Property in Turkey: Pitfalls for Foreign Buyers'
+seoDescription: >-
+  Foreigners buying property in Turkey must avoid common pitfalls. Understand
+  legal risks, off-plan issues, and other challenges for a secure Turkish
+excerpt: >-
+  Turkey has long captivated foreign investors and individuals seeking a new
+  home or a strategic investment. Its vibrant culture, strategic location, and
+  attractive real estate market offer compelling opportunities. However, like
+  any foreign investment, purchasing property in Turkey comes with its own set
+  of complexit...
+coverImage: ''
 publishedAt: '2026-05-14'
-category: "Buyer Mistakes"
+category: Buyer Mistakes
 ---
-
 # Navigating Turkish Property: Avoiding Common Pitfalls for Foreign Buyers
 
 Turkey has long captivated foreign investors and individuals seeking a new home or a strategic investment. Its vibrant culture, strategic location, and attractive real estate market offer compelling opportunities. However, like any foreign investment, purchasing property in Turkey comes with its own set of complexities and potential pitfalls. Without proper guidance and a thorough understanding of the local legal landscape, buyers may encounter unexpected challenges that could jeopardize their investment. This article aims to shed light on these common pitfalls and underscore the critical importance of professional legal assistance to ensure a secure and successful property acquisition.

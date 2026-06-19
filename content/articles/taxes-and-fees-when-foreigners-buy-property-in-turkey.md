@@ -1,14 +1,14 @@
 ---
 title: Taxes and Fees When Foreigners Buy Property in Turkey
 slug: taxes-and-fees-when-foreigners-buy-property-in-turkey
-seoTitle: Taxes and Fees When Foreigners Buy Property in Turkey
+seoTitle: Understanding Property Taxes & Fees for Foreigners in Turkey
 seoDescription: >-
-  Plan your budget with a practical overview of likely taxes, title costs,
-  service fees, and recurring ownership expenses.
+  Foreign buyers in Turkey: Get a clear overview of all taxes, title deed fees,
+  legal costs, and recurring property ownership expenses. Budget accurately and
 excerpt: >-
   A budgeting guide to one-time and ongoing costs for foreign property buyers in
   Turkey.
-coverImage: ""
+coverImage: ''
 publishedAt: '2026-04-21'
 category: Costs & Taxes
 ---

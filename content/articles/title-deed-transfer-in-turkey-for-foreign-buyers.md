@@ -1,14 +1,15 @@
 ---
 title: Title Deed Transfer in Turkey for Foreign Buyers
 slug: title-deed-transfer-in-turkey-for-foreign-buyers
-seoTitle: 'Title Deed Transfer in Turkey for Foreign Buyers: What to Expect'
+seoTitle: Title Deed Transfer in Turkey for Foreign Buyers in Turkey
 seoDescription: >-
-  A practical explanation of title deed transfer flow, document readiness, and
-  common transfer-day issues for foreigners.
+  Foreign buyers: Understand the title deed transfer process in Turkey. Learn
+  about Tapu Office procedures, essential documents, and practical steps to
+  avoid
 excerpt: >-
   Understand transfer-day workflow, official process points, and how to avoid
   closing delays.
-coverImage: ""
+coverImage: ''
 publishedAt: '2026-04-21'
 category: Title Deed
 ---

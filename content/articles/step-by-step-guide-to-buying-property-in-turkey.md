@@ -1,14 +1,14 @@
 ---
 title: Step-by-Step Guide to Buying Property in Turkey
 slug: step-by-step-guide-to-buying-property-in-turkey
-seoTitle: Step-by-Step Guide to Buying Property in Turkey for Foreigners
+seoTitle: 'Buying Property in Turkey: Step-by-Step Guide for Foreigners'
 seoDescription: >-
-  Follow a clear purchase roadmap from shortlist to title deed transfer,
-  tailored for foreign buyers in Turkey.
+  This guide offers foreign buyers a clear, chronological roadmap for purchasing
+  property in Turkey. Understand each step from initial search to final title
 excerpt: >-
   A chronological purchase checklist for foreigners, from first search to final
   transfer.
-coverImage: ""
+coverImage: ''
 publishedAt: '2026-04-21'
 category: Buying Process
 ---

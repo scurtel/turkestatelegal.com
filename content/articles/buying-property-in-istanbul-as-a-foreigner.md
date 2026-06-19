@@ -1,14 +1,14 @@
 ---
 title: Buying Property in Istanbul as a Foreigner
 slug: buying-property-in-istanbul-as-a-foreigner
-seoTitle: 'Buying Property in Istanbul as a Foreigner: Practical Legal and Market Guide'
+seoTitle: 'Buying Property in Istanbul: A Foreigner''s Legal Guide'
 seoDescription: >-
-  A practical guide for foreigners buying property in Istanbul, covering
-  district choice, legal checks, and transaction planning.
+  A comprehensive guide for foreigners buying property in Istanbul. Understand
+  legal checks, district dynamics, investment potential, and transaction
 excerpt: >-
   A city-specific guide for foreign buyers in Istanbul with practical legal,
   location, and budgeting considerations.
-coverImage: ""
+coverImage: ''
 publishedAt: '2026-04-21'
 category: City Guide
 ---

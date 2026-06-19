@@ -1,14 +1,14 @@
 ---
 title: Legal Due Diligence Before Buying a House in Turkey
 slug: legal-due-diligence-before-buying-a-house-in-turkey
-seoTitle: Legal Due Diligence Before Buying a House in Turkey | Foreign Buyer Guide
+seoTitle: 'Buying Property in Turkey: Legal Due Diligence for'
 seoDescription: >-
   Legal due diligence checklist for foreigners buying a house in Turkey: Tapu,
   debts, zoning, contracts, and safer payments before you commit.
 excerpt: >-
   A lawyer-led due diligence framework for house purchases in Turkey—what to
   verify, in what order, and before you pay.
-coverImage: ""
+coverImage: ''
 publishedAt: '2026-06-02'
 category: Due Diligence
 author: Turks Estate Legal

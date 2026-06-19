@@ -1,14 +1,20 @@
 ---
-title: "Off-Plan Property in Turkey: Risks, Rewards & Legal Safeguards"
+title: 'Off-Plan Property in Turkey: Risks, Rewards & Legal Safeguards'
 slug: off-plan-property-turkey-buyers
-seoTitle: "Off-Plan Property in Turkey: Risks, Rewards & Legal Safeguards"
-seoDescription: "Explore off-plan property investment in Turkey, understanding its unique risks and rewards. Learn how legal safeguards and due diligence protect foreign buyers. Essential guide for secure purchases."
-excerpt: "Investing in real estate in Turkey continues to attract significant international interest, driven by its vibrant economy, strategic location, and appealing lifestyle. Among the various investment avenues, purchasing off-plan property – that is, a property that is still under construction or has not yet been built –..."
-coverImage: ""
+seoTitle: 'Off-Plan Property Turkey: Risks & Legal Safeguards for'
+seoDescription: >-
+  Understand off-plan property in Turkey: risks, rewards, and essential legal
+  safeguards. Guide for foreign buyers on due diligence for secure purchases.
+excerpt: >-
+  Investing in real estate in Turkey continues to attract significant
+  international interest, driven by its vibrant economy, strategic location, and
+  appealing lifestyle. Among the various investment avenues, purchasing off-plan
+  property – that is, a property that is still under construction or has not yet
+  been built –...
+coverImage: ''
 publishedAt: '2026-05-14'
-category: "Off-Plan Risk"
+category: Off-Plan Risk
 ---
-
 # Navigating Off-Plan Property Purchases in Turkey: Risks, Rewards, and Legal Safeguards
 
 Investing in real estate in Turkey continues to attract significant international interest, driven by its vibrant economy, strategic location, and appealing lifestyle. Among the various investment avenues, purchasing off-plan property – that is, a property that is still under construction or has not yet been built – presents a unique set of opportunities and challenges. While the allure of potentially lower entry prices, customization options, and capital appreciation can be strong, off-plan purchases inherently carry greater risks compared to acquiring completed properties. For foreign investors, understanding these nuances and securing robust legal protection is paramount.

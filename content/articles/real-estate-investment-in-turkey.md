@@ -1,18 +1,17 @@
 ---
-title: 'Real Estate Investment in Turkey for Foreign Buyers'
+title: Real Estate Investment in Turkey for Foreign Buyers
 slug: real-estate-investment-in-turkey
-seoTitle: Turkish Real Estate Investment for Foreigners | Strategic Guide
+seoTitle: 'Investing in Turkish Real Estate: A Foreign Buyer''s Guide'
 seoDescription: >-
-  A strategic overview for foreigners evaluating Turkish property as an
-  investment, covering legal guardrails, planning, and realistic risk framing.
+  Foreign buyers' guide to strategic Turkish real estate investment. Clarify
+  goals (rental, appreciation, residency) and learn legal habits to protect
 excerpt: >-
   How to think about Turkish property as an investment category—goals,
   constraints, and the legal habits that protect capital.
-coverImage: ""
+coverImage: ''
 publishedAt: '2026-04-21'
 category: Investment
 ---
-
 # Real Estate Investment in Turkey
 
 Turkey attracts foreign buyers for many reasons: lifestyle, retirement, family ties, and long-term diversification. Some buyers also view housing primarily as an investment—rental income, eventual resale, or a combination. There is nothing wrong with that aim, but it succeeds when expectations are grounded in process, not in slogans.

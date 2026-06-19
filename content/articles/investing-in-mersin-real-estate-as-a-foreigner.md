@@ -1,17 +1,19 @@
 ---
-title: "Investing in Mersin Real Estate as a Foreigner: Legal Guide for 2026"
+title: 'Investing in Mersin Real Estate as a Foreigner: Legal Guide for 2026'
 slug: investing-in-mersin-real-estate-as-a-foreigner
-seoTitle: "Investing in Mersin Real Estate as a Foreigner | 2026 Legal Guide"
+seoTitle: 'Mersin Real Estate for Foreigners: 2026 Legal Guide'
 seoDescription: >-
-  Learn how foreigners can legally invest in Mersin real estate in 2026, including title deed checks, payments, residence permits and citizenship risks.
+  Learn how foreigners can legally invest in Mersin real estate in 2026,
+  including title deed checks, payments, residence permits and citizenship
+  risks.
 excerpt: >-
-  2026 legal guide for foreigners investing in Mersin real estate—Tapu checks, payment safety, residence vs citizenship, and common buyer mistakes.
-coverImage: ""
+  2026 legal guide for foreigners investing in Mersin real estate—Tapu checks,
+  payment safety, residence vs citizenship, and common buyer mistakes.
+coverImage: ''
 publishedAt: '2026-06-11'
-category: "Mersin Investment"
+category: Mersin Investment
 author: Turks Estate Legal
 ---
-
 # Investing in Mersin Real Estate as a Foreigner: Legal Guide for 2026
 
 Mersin, a vibrant port city on Turkey's Mediterranean coast, is increasingly attracting the attention of foreign investors and expats. Its strategic location, growing economy, and burgeoning real estate market present compelling opportunities for those looking to invest in property or establish a new life in Turkey. As of 2026, understanding the legal framework is crucial for a secure and successful investment.
@@ -105,4 +107,3 @@ While not legally mandatory, engaging a lawyer before signing any sales contract
 ---
 
 *This article is for general informational purposes only and does not constitute legal advice. Each case should be assessed according to its own facts and current legislation.*
-

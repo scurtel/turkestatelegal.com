@@ -1,14 +1,14 @@
 ---
 title: Common Mistakes Foreign Buyers Make When Purchasing Property in Turkey
 slug: common-mistakes-foreign-buyers-make-when-purchasing-property-in-turkey
-seoTitle: Common Mistakes Foreign Buyers Make When Purchasing Property in Turkey
+seoTitle: 'Turkish Property: Mistakes Foreign Buyers Must Avoid'
 seoDescription: >-
-  Avoid expensive errors with a practical breakdown of the most common legal,
-  financial, and process mistakes.
+  Understand and prevent critical errors foreign buyers make when purchasing
+  property in Turkey. This guide details common legal, financial, and process
 excerpt: >-
   A prevention guide that explains frequent mistakes and how to avoid them
   before and during purchase.
-coverImage: ""
+coverImage: ''
 publishedAt: '2026-04-21'
 category: Buyer Mistakes
 ---

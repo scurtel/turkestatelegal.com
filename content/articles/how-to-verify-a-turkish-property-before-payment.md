@@ -1,14 +1,14 @@
 ---
 title: How to Verify a Turkish Property Before Payment
 slug: how-to-verify-a-turkish-property-before-payment
-seoTitle: 'How to Verify a Turkish Property Before Payment: Foreign Buyer Checklist'
+seoTitle: How to Verify Turkish Property Before Payment for Foreigners
 seoDescription: >-
-  Use a practical verification workflow before deposit or transfer when buying
-  property in Turkey as a foreigner.
+  A practical pre-payment verification workflow for foreign buyers to reduce
+  legal and financial risk when buying property in Turkey. Learn essential due
 excerpt: >-
   A practical pre-payment verification workflow for foreign buyers to reduce
   legal and financial risk.
-coverImage: ""
+coverImage: ''
 publishedAt: '2026-04-21'
 category: Payment Safety
 ---

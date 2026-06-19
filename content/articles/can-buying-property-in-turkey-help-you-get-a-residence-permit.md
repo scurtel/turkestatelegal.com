@@ -1,14 +1,14 @@
 ---
 title: Can Buying Property in Turkey Help You Get a Residence Permit?
 slug: can-buying-property-in-turkey-help-you-get-a-residence-permit
-seoTitle: Can Buying Property in Turkey Help You Get a Residence Permit?
+seoTitle: How Buying Property in Turkey Leads to a Residence Permit
 seoDescription: >-
-  Understand how property ownership may relate to residence permit options and
-  why case-by-case legal review matters.
+  Understand how property ownership in Turkey can lead to a residence permit.
+  This guide outlines specific permit types, legal requirements, and the
 excerpt: >-
   A cautious, practical look at how property ownership may support residence
   planning for foreigners.
-coverImage: ""
+coverImage: ''
 publishedAt: '2026-04-21'
 category: Residence Permit
 ---

@@ -1,14 +1,14 @@
 ---
 title: Can Foreigners Buy Property in Turkey?
 slug: can-foreigners-buy-property-in-turkey
-seoTitle: 'Can Foreigners Buy Property in Turkey? Rules, Limits, and Safe Steps'
+seoTitle: Can Foreigners Buy Property in Turkey? Eligibility & Rules
 seoDescription: >-
-  Understand how foreigners can buy property in Turkey, what to verify first,
-  and where legal checks matter most.
+  Can foreigners buy property in Turkey? This guide explains eligibility, legal
+  limits, and the secure process for foreign nationals to acquire real estate.
 excerpt: >-
   A practical overview of eligibility, limits, and the safest way for foreigners
   to buy property in Turkey.
-coverImage: ""
+coverImage: ''
 publishedAt: '2026-04-21'
 category: Eligibility
 ---

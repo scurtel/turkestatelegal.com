@@ -1,15 +1,14 @@
 ---
 title: Turkish Citizenship by Investment Through Real Estate
 slug: turkish-citizenship-by-investment-through-real-estate
-seoTitle: >-
-  Turkish Citizenship by Investment Through Real Estate | Rules & Verification
+seoTitle: 'Turkish Citizenship by Investment: Real Estate Guide for'
 seoDescription: >-
   How foreign buyers use qualifying real estate for Turkish citizenship by
   investment: thresholds, Tapu annotations, payments, and what to verify first.
 excerpt: >-
   A compliance-focused guide to citizenship-by-investment through property—what
   must be verified before you pay and before you file.
-coverImage: ""
+coverImage: ''
 publishedAt: '2026-06-02'
 category: Citizenship by Investment
 author: Turks Estate Legal

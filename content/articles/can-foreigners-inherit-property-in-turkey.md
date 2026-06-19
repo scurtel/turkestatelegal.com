@@ -1,14 +1,14 @@
 ---
 title: Can Foreigners Inherit Property in Turkey?
 slug: can-foreigners-inherit-property-in-turkey
-seoTitle: Can Foreigners Inherit Property in Turkey? Practical Legal Guidance
+seoTitle: 'Turkish Property Inheritance for Foreigners: Legal Guide'
 seoDescription: >-
-  Learn how inheritance of Turkish property may work for foreigners, what
-  documents are usually needed, and where legal verification matters.
+  Understand Turkish property inheritance for foreigners. Learn legal steps,
+  required documents, and key considerations for foreign heirs in Turkey.
 excerpt: >-
   A practical overview of inheritance pathways, legal steps, and document checks
   for foreign heirs in Turkey.
-coverImage: ""
+coverImage: ''
 publishedAt: '2026-04-21'
 category: Inheritance
 ---
