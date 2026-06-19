@@ -350,6 +350,150 @@ li {
   font-size: 0.95rem;
 }
 
+.topic-index,
+.topic-page {
+  max-width: 980px;
+}
+
+.topic-kicker {
+  margin: 0 0 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--brand-soft);
+}
+
+.topic-breadcrumb {
+  margin: 0 0 0.75rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.topic-lead {
+  margin: 0.75rem 0 0;
+  color: var(--muted);
+  max-width: 52rem;
+}
+
+.topic-index-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.topic-index-card {
+  padding: 1.2rem;
+  border-radius: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgb(15 23 42 / 6%);
+}
+
+.topic-index-card h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.15rem;
+}
+
+.topic-index-card p {
+  margin: 0 0 0.75rem;
+  color: var(--muted);
+}
+
+.topic-pillar {
+  margin-top: 1.75rem;
+}
+
+.topic-pillar-label {
+  margin: 0 0 0.65rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent-dark);
+}
+
+.topic-pillar-card {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: linear-gradient(
+    160deg,
+    rgb(255 251 235 / 90%) 0%,
+    var(--surface) 100%
+  );
+  border: 1px solid rgb(190 161 90 / 22%);
+}
+
+.topic-pillar-copy h2 {
+  margin: 0 0 0.65rem;
+  font-size: 1.35rem;
+}
+
+.topic-pillar-copy p {
+  margin: 0 0 1rem;
+  color: var(--muted);
+}
+
+.topic-pillar-cta {
+  display: inline-block;
+}
+
+.topic-pillar-media,
+.topic-pillar-img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.topic-spokes {
+  margin-top: 2rem;
+}
+
+.topic-crosslinks {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.topic-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 0.75rem;
+}
+
+.topic-chip,
+.topic-nav-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--accent-dark);
+  font-size: 0.92rem;
+}
+
+.topic-chip:hover,
+.topic-nav-chip:hover {
+  border-color: rgb(190 161 90 / 45%);
+  text-decoration: none;
+}
+
+.topic-nav-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin: 1rem 0 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .topic-pillar-card {
+    grid-template-columns: 1fr;
+  }
+}
+
 .article-card {
   border-radius: 14px;
   overflow: hidden;

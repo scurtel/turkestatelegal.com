@@ -69,13 +69,13 @@ export default function HomePage() {
           committing funds.
         </p>
         <div className="hero-actions">
-          <Link href="/articles" className="hero-chip">
+          <Link href="/topics/buying-property" className="hero-chip">
             Document-first purchase guidance
           </Link>
-          <Link href="/articles" className="hero-chip">
+          <Link href="/topics/due-diligence" className="hero-chip">
             Practical risk and fraud awareness
           </Link>
-          <Link href="/articles" className="hero-chip">
+          <Link href="/topics/citizenship" className="hero-chip">
             Residency and citizenship context
           </Link>
         </div>
@@ -223,6 +223,8 @@ export default function HomePage() {
             ))}
           </div>
           <p className="mersin-guides-footer">
+            <Link href="/topics/mersin">Open Mersin topic guide</Link>
+            {" · "}
             <Link href="/articles">View all articles</Link>
           </p>
         </section>

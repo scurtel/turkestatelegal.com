@@ -48,6 +48,9 @@ export default function SiteHeader() {
           <Link href="/articles" onClick={closeMenu}>
             Articles
           </Link>
+          <Link href="/topics" onClick={closeMenu}>
+            Topics
+          </Link>
           <Link href="/about" onClick={closeMenu}>
             About
           </Link>

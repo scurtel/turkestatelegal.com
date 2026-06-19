@@ -19,6 +19,27 @@ export default function ArticlesPage() {
         foreigners buying property in Turkey.
       </p>
 
+      <div className="topic-nav-row" aria-label="Topic guides">
+        <Link href="/topics" className="topic-nav-chip">
+          All topics
+        </Link>
+        <Link href="/topics/buying-property" className="topic-nav-chip">
+          Buying Property
+        </Link>
+        <Link href="/topics/due-diligence" className="topic-nav-chip">
+          Due Diligence
+        </Link>
+        <Link href="/topics/citizenship" className="topic-nav-chip">
+          Citizenship
+        </Link>
+        <Link href="/topics/residence-permit" className="topic-nav-chip">
+          Residence Permit
+        </Link>
+        <Link href="/topics/mersin" className="topic-nav-chip">
+          Mersin
+        </Link>
+      </div>
+
       <div className="article-grid">
         {articles.map((article) => (
           <article className="article-card" key={article.slug}>

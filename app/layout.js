@@ -76,6 +76,9 @@ export default function RootLayout({ children }) {
                 <Link href="/articles">Articles</Link>
               </p>
               <p>
+                <Link href="/topics">Topic Guides</Link>
+              </p>
+              <p>
                 <Link href="/about">About</Link>
               </p>
               <p>
