@@ -1,5 +1,5 @@
 ---
-title: Rental Income in Turkey: Legal Guide for Foreign Owners
+title: "Rental Income in Turkey: Legal Guide for Foreign Owners"
 slug: rental-income-legal-issues-foreign-property-owners-turkey
 seoTitle: "Rental Income in Turkey: Legal Guide for Foreign Owners"
 seoDescription: >-
