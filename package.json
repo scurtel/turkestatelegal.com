@@ -12,7 +12,8 @@
     "generate:jun2026-articles": "node scripts/generate-five-seo-articles-jun2026.js",
     "generate:mersin-articles": "node scripts/generate-five-mersin-articles.js",
     "optimize:meta": "node scripts/optimize-article-meta.js",
-    "generate:escrow-cluster": "node scripts/generate-turkish-escrow-cluster.js"
+    "generate:escrow-cluster": "node scripts/generate-turkish-escrow-cluster.js",
+    "generate:auto-article": "node scripts/generate-article.mjs"
   },
   "dependencies": {
     "dotenv": "^17.4.2",
