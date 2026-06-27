@@ -301,16 +301,26 @@ function pickTopic(existingArticles) {
   return uncovered[pickIndex];
 }
 
-function validateMeta(seoTitle, seoDescription) {
+function logRecommendations(label, issues) {
+  if (issues.length > 0) {
+    console.warn(
+      `${label} recommendations (non-blocking): ${issues.join("; ")}`
+    );
+  }
+}
+
+function getMetaRecommendations(seoTitle, seoDescription) {
   const issues = [];
   if (seoTitle.length < 50 || seoTitle.length > 60) {
-    issues.push(`seoTitle length ${seoTitle.length} (want 50-60)`);
+    issues.push(`seoTitle length ${seoTitle.length} (recommended 50-60)`);
   }
   if (seoDescription.length < 140 || seoDescription.length > 155) {
-    issues.push(`seoDescription length ${seoDescription.length} (want 140-155)`);
+    issues.push(
+      `seoDescription length ${seoDescription.length} (recommended 140-155)`
+    );
   }
   if (/turk estate legal/i.test(seoTitle)) {
-    issues.push("seoTitle must not include brand name");
+    issues.push("seoTitle includes brand name (recommended to omit)");
   }
   return issues;
 }
@@ -397,7 +407,7 @@ function parseJsonResponse(raw) {
   return JSON.parse(jsonText);
 }
 
-function buildPrompt(topicDef, existingArticles, retryNote = "") {
+function buildPrompt(topicDef, existingArticles) {
   const linkCandidates = existingArticles
     .slice(0, 20)
     .map((article) => `/articles/${article.slug}`)
@@ -408,14 +418,12 @@ function buildPrompt(topicDef, existingArticles, retryNote = "") {
 Write ONE new SEO article on this topic:
 "${topicDef.topic}"
 
-${retryNote}
-
 Return ONLY valid JSON with this shape:
 {
   "title": "Full article H1 title",
   "slug": "kebab-case-slug",
-  "seoTitle": "50-60 chars, no brand name",
-  "seoDescription": "140-155 chars",
+  "seoTitle": "recommended 50-60 chars, no brand name",
+  "seoDescription": "recommended 140-155 chars",
   "excerpt": "1-2 sentence summary under 180 chars",
   "category": "${topicDef.category}",
   "focusKeyword": "${topicDef.focusKeyword}",
@@ -434,68 +442,101 @@ BODY RULES for bodyMarkdown:
 - Do NOT use: best lawyer, guaranteed result, 100% safe, risk-free, fastest citizenship, unlock, contact us now.
 - Do not present content as legal advice for a specific case.
 - Cover Tapu/title deed, contracts, due diligence, payment safety where relevant.
-- Include ## FAQ with at least 4 questions as ### headings.
-- After FAQ add ## Related Articles with 3 markdown bullet links to existing paths from: ${linkCandidates}
-- Include 3-5 natural internal markdown links in the body to paths from that list.
+- Include ## FAQ with at least 4 questions as ### headings (recommended).
+- After FAQ add ## Related Articles with 3 markdown bullet links to existing paths from: ${linkCandidates} (recommended).
+- Include 3-5 natural internal markdown links in the body to paths from that list (recommended).
 - Do NOT include YAML frontmatter or code fences inside bodyMarkdown.
 
-FAQ JSON-LD will be generated at build time from the FAQ section — ensure FAQ answers are complete sentences.
+FAQ JSON-LD will be generated at build time from the FAQ section when present.
 
-Character counts for seoTitle and seoDescription are strict.`;
+Meta length targets are recommendations only — publish even if slightly outside range.`;
+}
+
+function resolveSlug(parsed, topicDef, existingArticles) {
+  let slug = slugify(parsed.slug || topicDef.slugHint);
+
+  if (!slug || !/^[a-z0-9-]+$/.test(slug)) {
+    slug = slugify(topicDef.slugHint) || `article-${Date.now()}`;
+    logRecommendations("slug", ["invalid slug from model; using fallback"]);
+  }
+
+  if (existingArticles.some((article) => article.slug === slug)) {
+    const suffix = new Date().toISOString().slice(0, 10).replace(/-/g, "");
+    slug = `${slug}-${suffix}`;
+    logRecommendations("slug", [`duplicate slug resolved to ${slug}`]);
+  }
+
+  return slug;
+}
+
+function buildArticleFromParsed(parsed, topicDef, existingArticles) {
+  let body = String(parsed.bodyMarkdown || "").trim();
+  const meta = normalizeMeta(parsed);
+
+  logRecommendations(
+    "meta",
+    getMetaRecommendations(meta.seoTitle, meta.seoDescription)
+  );
+
+  const words = wordCount(body.replace(/^#.+$/m, ""));
+  if (words < RECOMMENDED_MIN_WORDS || words > RECOMMENDED_MAX_WORDS) {
+    console.warn(
+      `Word count ${words} is outside recommended ${RECOMMENDED_MIN_WORDS}-${RECOMMENDED_MAX_WORDS} range (accepted).`
+    );
+  }
+
+  if (!body.includes("## FAQ")) {
+    logRecommendations("content", ["missing FAQ section"]);
+  }
+
+  if (!body) {
+    throw new Error("Gemini returned an empty article body.");
+  }
+
+  let title = String(parsed.title || "").trim();
+  if (!title) {
+    title = topicDef.topic;
+    logRecommendations("title", ["missing title; using topic label"]);
+  }
+
+  if (!body.startsWith("#")) {
+    body = `# ${title}\n\n${body}`;
+    logRecommendations("content", ["added missing H1"]);
+  }
+
+  const slug = resolveSlug(parsed, topicDef, existingArticles);
+
+  return {
+    title,
+    slug,
+    seoTitle: meta.seoTitle || title.slice(0, 60),
+    seoDescription:
+      meta.seoDescription ||
+      String(parsed.excerpt || topicDef.topic).slice(0, 155),
+    excerpt: String(parsed.excerpt || topicDef.topic).trim(),
+    category: String(parsed.category || topicDef.category).trim(),
+    focusKeyword: String(parsed.focusKeyword || topicDef.focusKeyword).trim(),
+    secondaryKeywords: Array.isArray(parsed.secondaryKeywords)
+      ? parsed.secondaryKeywords.map(String)
+      : [],
+    body
+  };
 }
 
 async function generateArticlePayload(topicDef, existingArticles) {
-  let retryNote = "";
+  const raw = await callGeminiWithRetry(
+    buildPrompt(topicDef, existingArticles)
+  );
 
-  for (let attempt = 1; attempt <= 3; attempt += 1) {
-    const raw = await callGeminiWithRetry(
-      buildPrompt(topicDef, existingArticles, retryNote)
-    );
-    const parsed = parseJsonResponse(raw);
-    const body = String(parsed.bodyMarkdown || "").trim();
-    const words = wordCount(body.replace(/^#.+$/m, ""));
-
-    const meta = normalizeMeta(parsed);
-    const metaIssues = validateMeta(meta.seoTitle, meta.seoDescription);
-    const slug = slugify(parsed.slug || topicDef.slugHint);
-
-    const issues = [...metaIssues];
-    if (!slug || !/^[a-z0-9-]+$/.test(slug)) {
-      issues.push("invalid slug");
-    }
-    if (existingArticles.some((article) => article.slug === slug)) {
-      issues.push(`slug already exists: ${slug}`);
-    }
-    if (words < RECOMMENDED_MIN_WORDS || words > RECOMMENDED_MAX_WORDS) {
-      console.warn(
-        `Word count ${words} is outside recommended ${RECOMMENDED_MIN_WORDS}-${RECOMMENDED_MAX_WORDS} range (accepted).`
-      );
-    }
-    if (!body.includes("## FAQ")) {
-      issues.push("missing FAQ section");
-    }
-
-    if (issues.length === 0) {
-      return {
-        title: String(parsed.title || "").trim(),
-        slug,
-        seoTitle: meta.seoTitle,
-        seoDescription: meta.seoDescription,
-        excerpt: String(parsed.excerpt || "").trim(),
-        category: String(parsed.category || topicDef.category).trim(),
-        focusKeyword: String(parsed.focusKeyword || topicDef.focusKeyword).trim(),
-        secondaryKeywords: Array.isArray(parsed.secondaryKeywords)
-          ? parsed.secondaryKeywords.map(String)
-          : [],
-        body
-      };
-    }
-
-    retryNote = `Previous attempt failed validation:\n- ${issues.join("\n- ")}\nFix all issues.`;
-    console.warn(`Validation failed (attempt ${attempt}): ${issues.join("; ")}`);
+  let parsed;
+  try {
+    parsed = parseJsonResponse(raw);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    throw new Error(`Could not parse Gemini JSON: ${message}`);
   }
 
-  throw new Error("Could not generate a valid article after retries.");
+  return buildArticleFromParsed(parsed, topicDef, existingArticles);
 }
 
 function writeArticleFile(article, publishedAt) {
