@@ -17,8 +17,8 @@ const AUTHOR = "Turks Estate Legal";
 const DISCLAIMER =
   "This article is for general informational purposes only and does not constitute legal advice. Each case should be assessed according to its own facts and current legislation.";
 const DEFAULT_MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
-const MIN_WORDS = 900;
-const MAX_WORDS = 1200;
+const RECOMMENDED_MIN_WORDS = 900;
+const RECOMMENDED_MAX_WORDS = 1200;
 
 const TOPIC_POOL = [
   {
@@ -428,7 +428,7 @@ Suggested slug (use or improve): ${topicDef.slugHint}
 BODY RULES for bodyMarkdown:
 - Start with ONE # H1 matching title (exactly once).
 - Use ## and ### for structure.
-- Length: ${MIN_WORDS}-${MAX_WORDS} words.
+- Recommended length: about ${RECOMMENDED_MIN_WORDS}-${RECOMMENDED_MAX_WORDS} words (flexible — quality matters more than exact count).
 - English only. Professional, cautious legal information tone.
 - Mention Lawyer Ceren Sumer Cilli naturally once in a "How Turk Estate Legal Can Help" section.
 - Do NOT use: best lawyer, guaranteed result, 100% safe, risk-free, fastest citizenship, unlock, contact us now.
@@ -466,8 +466,10 @@ async function generateArticlePayload(topicDef, existingArticles) {
     if (existingArticles.some((article) => article.slug === slug)) {
       issues.push(`slug already exists: ${slug}`);
     }
-    if (words < MIN_WORDS || words > MAX_WORDS + 150) {
-      issues.push(`word count ${words} outside ${MIN_WORDS}-${MAX_WORDS} target`);
+    if (words < RECOMMENDED_MIN_WORDS || words > RECOMMENDED_MAX_WORDS) {
+      console.warn(
+        `Word count ${words} is outside recommended ${RECOMMENDED_MIN_WORDS}-${RECOMMENDED_MAX_WORDS} range (accepted).`
+      );
     }
     if (!body.includes("## FAQ")) {
       issues.push("missing FAQ section");
