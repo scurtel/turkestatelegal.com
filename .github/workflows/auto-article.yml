@@ -32,16 +32,38 @@ jobs:
       - name: Generate article with Gemini
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          SITE_BASE_URL: https://turkestatelegal.com
         run: node scripts/generate-article.mjs
+
+      - name: Prepare Instagram draft and carousel images
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          SITE_BASE_URL: https://turkestatelegal.com
+          FB_PAGE_ID: "1097982366728133"
+        run: node scripts/publish-instagram.mjs
 
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add content/articles/ public/sitemap.xml
+          git add content/articles/ public/sitemap.xml social-drafts/instagram/ public/social/instagram/
           if git diff --staged --quiet; then
             echo "No article changes to commit."
             exit 0
           fi
           git commit -m "chore: add auto-generated SEO article ($(date -u +%Y-%m-%d))"
           git push
+
+      - name: Publish to Instagram
+        continue-on-error: true
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          SITE_BASE_URL: https://turkestatelegal.com
+          FB_PAGE_ID: "1097982366728133"
+        run: |
+          sleep 90
+          node scripts/publish-instagram.mjs --publish-only

@@ -3,6 +3,7 @@
  * Weekly auto-article generator for turkestatelegal.com
  * Usage: GEMINI_API_KEY=... node scripts/generate-article.mjs
  */
+import "dotenv/config";
 import fs from "node:fs";
 import path from "node:path";
 import { execSync } from "node:child_process";
@@ -13,6 +14,10 @@ const __filename = fileURLToPath(import.meta.url);
 
 const ROOT = process.cwd();
 const ARTICLES_DIR = path.join(ROOT, "content", "articles");
+const INSTAGRAM_DRAFTS_DIR = path.join(ROOT, "social-drafts", "instagram");
+const SITE_BASE_URL = (
+  process.env.SITE_BASE_URL || "https://turkestatelegal.com"
+).replace(/\/$/, "");
 const AUTHOR = "Turks Estate Legal";
 const DISCLAIMER =
   "This article is for general informational purposes only and does not constitute legal advice. Each case should be assessed according to its own facts and current legislation.";
@@ -566,6 +571,19 @@ author: ${AUTHOR}
   return targetPath;
 }
 
+function writeLastArticleMarker(slug) {
+  fs.mkdirSync(INSTAGRAM_DRAFTS_DIR, { recursive: true });
+  writeJson(path.join(INSTAGRAM_DRAFTS_DIR, "last-article.json"), {
+    slug,
+    articleUrl: `${SITE_BASE_URL}/articles/${slug}`,
+    generatedAt: new Date().toISOString()
+  });
+}
+
+function writeJson(filePath, data) {
+  fs.writeFileSync(filePath, `${JSON.stringify(data, null, 2)}\n`, "utf8");
+}
+
 function runBuild() {
   console.log("Running npm run build…");
   execSync("npm run build", {
@@ -597,6 +615,7 @@ async function main() {
   const article = await generateArticlePayload(topic, existingArticles);
   const publishedAt = new Date().toISOString().slice(0, 10);
   const targetPath = writeArticleFile(article, publishedAt);
+  writeLastArticleMarker(article.slug);
 
   console.log(`Wrote ${targetPath}`);
   console.log(`Slug: ${article.slug}`);
