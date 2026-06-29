@@ -405,11 +405,199 @@ async function callGeminiWithRetry(prompt, options = {}) {
   throw lastError;
 }
 
+function cleanGeminiJsonText(raw) {
+  let text = String(raw || "").trim().replace(/^\uFEFF/, "");
+
+  if (text.startsWith("```")) {
+    text = text
+      .replace(/^```(?:json)?\s*/i, "")
+      .replace(/\s*```\s*$/i, "")
+      .trim();
+  }
+
+  const fenced = text.match(/```(?:json)?\s*([\s\S]*?)```/i);
+  if (fenced) {
+    text = fenced[1].trim();
+  }
+
+  return extractJsonObject(text);
+}
+
+function extractJsonObject(text) {
+  const start = text.indexOf("{");
+  if (start === -1) {
+    throw new SyntaxError("No JSON object start found in Gemini response");
+  }
+
+  let depth = 0;
+  let inString = false;
+  let escaped = false;
+
+  for (let index = start; index < text.length; index += 1) {
+    const char = text[index];
+
+    if (inString) {
+      if (escaped) {
+        escaped = false;
+        continue;
+      }
+      if (char === "\\") {
+        escaped = true;
+        continue;
+      }
+      if (char === '"') {
+        inString = false;
+      }
+      continue;
+    }
+
+    if (char === '"') {
+      inString = true;
+      continue;
+    }
+
+    if (char === "{") {
+      depth += 1;
+    } else if (char === "}") {
+      depth -= 1;
+      if (depth === 0) {
+        return text.slice(start, index + 1);
+      }
+    }
+  }
+
+  throw new SyntaxError("Unbalanced JSON object in Gemini response");
+}
+
+function repairJsonText(text) {
+  return text
+    .replace(/,\s*([}\]])/g, "$1")
+    .replace(/\r\n/g, "\n");
+}
+
+function getJsonErrorPosition(error, raw) {
+  const match = String(error?.message || "").match(/position (\d+)/i);
+  if (!match) {
+    return null;
+  }
+
+  const position = Number(match[1]);
+  if (Number.isNaN(position)) {
+    return null;
+  }
+
+  const start = Math.max(0, position - 80);
+  const end = Math.min(raw.length, position + 80);
+  return {
+    position,
+    snippet: raw.slice(start, end).replace(/\s+/g, " ")
+  };
+}
+
+function writeRawGeminiOutput(raw) {
+  const logsDir = path.join(ROOT, "logs");
+  fs.mkdirSync(logsDir, { recursive: true });
+  fs.writeFileSync(path.join(logsDir, "gemini-raw-output.txt"), raw, "utf8");
+  console.error(`Raw Gemini output saved to ${path.join("logs", "gemini-raw-output.txt")}`);
+}
+
+function normalizeParsedPayload(parsed) {
+  const normalized = {
+    ...parsed,
+    title: parsed.title || parsed.headline || "",
+    slug: parsed.slug || "",
+    seoTitle: parsed.seoTitle || parsed.title || "",
+    seoDescription:
+      parsed.seoDescription || parsed.metaDescription || parsed.excerpt || "",
+    excerpt: parsed.excerpt || parsed.metaDescription || parsed.seoDescription || "",
+    bodyMarkdown: String(
+      parsed.bodyMarkdown || parsed.body || parsed.content || ""
+    ).trim(),
+    category: parsed.category || "",
+    focusKeyword: parsed.focusKeyword || "",
+    secondaryKeywords: Array.isArray(parsed.secondaryKeywords)
+      ? parsed.secondaryKeywords
+      : []
+  };
+
+  if (Array.isArray(parsed.faq) && parsed.faq.length > 0) {
+    const faqBlock = parsed.faq
+      .map((item) => {
+        if (typeof item === "string") {
+          return `### ${item}\n\nGeneral information may vary by case.`;
+        }
+        const question = item.question || item.q || "";
+        const answer = item.answer || item.a || "";
+        return `### ${question}\n\n${answer}`.trim();
+      })
+      .join("\n\n");
+
+    if (!normalized.bodyMarkdown.includes("## FAQ")) {
+      normalized.bodyMarkdown = `${normalized.bodyMarkdown}\n\n## FAQ\n\n${faqBlock}`.trim();
+    }
+  }
+
+  return normalized;
+}
+
+function validateParsedSchema(parsed) {
+  const issues = [];
+
+  if (!String(parsed.title || "").trim()) {
+    issues.push("missing title");
+  }
+  if (!String(parsed.slug || "").trim()) {
+    issues.push("missing slug");
+  }
+  if (!String(parsed.excerpt || parsed.seoDescription || "").trim()) {
+    issues.push("missing excerpt/metaDescription");
+  }
+  if (!String(parsed.bodyMarkdown || "").trim()) {
+    issues.push("missing content/body");
+  }
+  if (
+    !String(parsed.bodyMarkdown || "").includes("## FAQ") &&
+    (!Array.isArray(parsed.faq) || parsed.faq.length === 0)
+  ) {
+    issues.push("missing faq section");
+  }
+
+  if (issues.length > 0) {
+    logRecommendations("schema", issues);
+  }
+}
+
 function parseJsonResponse(raw) {
-  const trimmed = raw.trim();
-  const fenced = trimmed.match(/```(?:json)?\s*([\s\S]*?)```/);
-  const jsonText = fenced ? fenced[1].trim() : trimmed;
-  return JSON.parse(jsonText);
+  const cleaned = cleanGeminiJsonText(raw);
+
+  try {
+    const parsed = JSON.parse(cleaned);
+    const normalized = normalizeParsedPayload(parsed);
+    validateParsedSchema(normalized);
+    return normalized;
+  } catch (firstError) {
+    try {
+      const repaired = repairJsonText(cleaned);
+      const parsed = JSON.parse(repaired);
+      const normalized = normalizeParsedPayload(parsed);
+      validateParsedSchema(normalized);
+      logRecommendations("json", ["parsed after trailing-comma repair"]);
+      return normalized;
+    } catch (secondError) {
+      writeRawGeminiOutput(raw);
+      const error = secondError instanceof Error ? secondError : firstError;
+      const position = getJsonErrorPosition(error, cleaned);
+
+      console.error("Gemini returned invalid JSON");
+      if (position) {
+        console.error(
+          `Parse position: ${position.position} — snippet: ...${position.snippet}...`
+        );
+      }
+      console.error(error.message);
+      throw error;
+    }
+  }
 }
 
 function buildPrompt(topicDef, existingArticles) {
@@ -422,6 +610,14 @@ function buildPrompt(topicDef, existingArticles) {
 
 Write ONE new SEO article on this topic:
 "${topicDef.topic}"
+
+CRITICAL OUTPUT RULES:
+- Return ONLY valid JSON.
+- No markdown.
+- No code fences.
+- No explanation before or after the JSON.
+- Use double quotes for all JSON strings.
+- Escape newlines inside bodyMarkdown as \\n (do not break JSON structure).
 
 Return ONLY valid JSON with this shape:
 {
@@ -537,8 +733,7 @@ async function generateArticlePayload(topicDef, existingArticles) {
   try {
     parsed = parseJsonResponse(raw);
   } catch (error) {
-    const message = error instanceof Error ? error.message : String(error);
-    throw new Error(`Could not parse Gemini JSON: ${message}`);
+    process.exit(1);
   }
 
   return buildArticleFromParsed(parsed, topicDef, existingArticles);
