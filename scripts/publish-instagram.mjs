@@ -2,7 +2,7 @@
 /**
  * Instagram draft + single post image generator and optional Graph API publisher.
  * Usage:
- *   node scripts/publish-instagram.mjs              # prepare draft + post.png
+ *   node scripts/publish-instagram.mjs              # prepare draft + post.jpg
  *   node scripts/publish-instagram.mjs --publish-only
  *   node scripts/publish-instagram.mjs --slug=my-article
  */
@@ -29,8 +29,15 @@ const DEFAULT_MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
 const IMAGE_MODEL =
   process.env.GEMINI_IMAGE_MODEL || "gemini-2.0-flash-preview-image-generation";
 const USE_GEMINI_IMAGES = process.env.USE_GEMINI_IMAGES === "true";
-const POST_IMAGE_NAME = "post.png";
+const POST_IMAGE_NAME = "post.jpg";
+const LEGACY_POST_IMAGE_NAME = "post.png";
 const POST_SIZE = 1080;
+const META_CRAWLER_UA =
+  "facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)";
+const IMAGE_URL_POLL_ATTEMPTS = Number(process.env.IG_IMAGE_URL_POLL_ATTEMPTS || 20);
+const IMAGE_URL_POLL_INTERVAL_MS = Number(
+  process.env.IG_IMAGE_URL_POLL_INTERVAL_MS || 30000
+);
 
 const args = process.argv.slice(2);
 const publishOnly = args.includes("--publish-only");
@@ -242,9 +249,24 @@ function buildPostSvg(article) {
 </svg>`;
 }
 
+function buildPublicPostImageUrl(slug) {
+  return `${SITE_BASE_URL}/social/instagram/${slug}/${POST_IMAGE_NAME}`;
+}
+
+function getPostImagePath(slug) {
+  return path.join(PUBLIC_SOCIAL_DIR, slug, POST_IMAGE_NAME);
+}
+
+async function writeJpegFromSharpPipeline(pipeline, outputPath) {
+  await pipeline
+    .resize(POST_SIZE, POST_SIZE, { fit: "cover" })
+    .jpeg({ quality: 90, mozjpeg: true, chromaSubsampling: "4:4:4" })
+    .toFile(outputPath);
+}
+
 async function writeSvgPostImage(outputPath, article) {
   const svg = buildPostSvg(article);
-  await sharp(Buffer.from(svg)).png().toFile(outputPath);
+  await writeJpegFromSharpPipeline(sharp(Buffer.from(svg)), outputPath);
 }
 
 async function tryGenerateGeminiImage(imagePrompt, outputPath) {
@@ -278,8 +300,40 @@ async function tryGenerateGeminiImage(imagePrompt, outputPath) {
   }
 
   const buffer = Buffer.from(imagePart.inlineData.data, "base64");
-  await sharp(buffer).resize(POST_SIZE, POST_SIZE, { fit: "cover" }).png().toFile(outputPath);
+  await writeJpegFromSharpPipeline(sharp(buffer), outputPath);
   return true;
+}
+
+async function convertLegacyPngToJpeg(slug) {
+  const legacyPath = path.join(PUBLIC_SOCIAL_DIR, slug, LEGACY_POST_IMAGE_NAME);
+  const outputPath = getPostImagePath(slug);
+
+  if (!fs.existsSync(legacyPath)) {
+    return false;
+  }
+
+  await writeJpegFromSharpPipeline(sharp(legacyPath), outputPath);
+  console.log(`Converted legacy PNG to JPEG: ${outputPath}`);
+  return true;
+}
+
+async function ensurePostImageReady(slug, article) {
+  const outputPath = getPostImagePath(slug);
+
+  if (fs.existsSync(outputPath)) {
+    return outputPath;
+  }
+
+  if (await convertLegacyPngToJpeg(slug)) {
+    return outputPath;
+  }
+
+  if (!article) {
+    throw new Error(`Instagram post image missing for slug: ${slug}`);
+  }
+
+  const postMeta = await generateSingleInstagramPost(article);
+  return postMeta.outputPath;
 }
 
 async function generateSingleInstagramPost(article) {
@@ -530,6 +584,76 @@ ${postMeta.source}
   return draftPath;
 }
 
+async function graphGet(endpoint, credentials) {
+  const url = new URL(
+    `https://graph.facebook.com/${GRAPH_API_VERSION}/${endpoint}`
+  );
+  url.searchParams.set("access_token", credentials.accessToken);
+
+  const response = await fetch(url);
+  const data = await response.json();
+
+  if (!response.ok) {
+    const message = data?.error?.message || `Graph API error ${response.status}`;
+    throw new Error(message);
+  }
+
+  return data;
+}
+
+async function verifyPublicImageUrl(imageUrl) {
+  for (let attempt = 1; attempt <= IMAGE_URL_POLL_ATTEMPTS; attempt += 1) {
+    try {
+      const response = await fetch(imageUrl, {
+        headers: { "User-Agent": META_CRAWLER_UA },
+        redirect: "follow"
+      });
+      const contentType = (response.headers.get("content-type") || "").toLowerCase();
+
+      if (response.ok && contentType.includes("image/jpeg")) {
+        console.log(`Image URL ready (attempt ${attempt}): ${imageUrl}`);
+        return;
+      }
+
+      console.warn(
+        `Image URL not ready (attempt ${attempt}/${IMAGE_URL_POLL_ATTEMPTS}): HTTP ${response.status}, Content-Type: ${contentType || "unknown"}`
+      );
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      console.warn(
+        `Image URL check failed (attempt ${attempt}/${IMAGE_URL_POLL_ATTEMPTS}): ${message}`
+      );
+    }
+
+    if (attempt < IMAGE_URL_POLL_ATTEMPTS) {
+      await sleep(IMAGE_URL_POLL_INTERVAL_MS);
+    }
+  }
+
+  throw new Error(
+    `Image URL not publicly accessible as JPEG after ${IMAGE_URL_POLL_ATTEMPTS} attempts: ${imageUrl}`
+  );
+}
+
+async function waitForContainerReady(containerId, credentials) {
+  for (let attempt = 1; attempt <= 12; attempt += 1) {
+    const data = await graphGet(`${containerId}?fields=status_code`, credentials);
+    const status = data?.status_code;
+
+    if (status === "FINISHED") {
+      return;
+    }
+
+    if (status === "ERROR" || status === "EXPIRED") {
+      throw new Error(`Instagram media container status: ${status}`);
+    }
+
+    await sleep(5000);
+  }
+
+  throw new Error("Instagram media container did not finish processing in time.");
+}
+
 async function graphPost(endpoint, params) {
   const body = new URLSearchParams(params);
   const response = await fetch(
@@ -551,14 +675,17 @@ async function graphPost(endpoint, params) {
 }
 
 async function publishSingleImageToInstagram(slug, caption, credentials) {
-  const imageUrl = `${SITE_BASE_URL}/social/instagram/${slug}/${POST_IMAGE_NAME}`;
+  const imageUrl = buildPublicPostImageUrl(slug);
+
+  await verifyPublicImageUrl(imageUrl);
+
   const container = await graphPost(`${credentials.igUserId}/media`, {
     image_url: imageUrl,
     caption,
     access_token: credentials.accessToken
   });
 
-  await sleep(1500);
+  await waitForContainerReady(container.id, credentials);
 
   const published = await graphPost(`${credentials.igUserId}/media_publish`, {
     creation_id: container.id,
@@ -652,10 +779,9 @@ async function publishPreparedInstagram(slug) {
     throw new Error(`Instagram draft missing for slug: ${slug}`);
   }
 
-  const postImagePath = path.join(PUBLIC_SOCIAL_DIR, slug, POST_IMAGE_NAME);
-  if (!fs.existsSync(postImagePath)) {
-    throw new Error(`Instagram post image missing for slug: ${slug}`);
-  }
+  const postImagePath = await ensurePostImageReady(slug, article);
+  console.log(`Using Instagram image: ${postImagePath}`);
+  console.log(`Public image URL: ${buildPublicPostImageUrl(slug)}`);
 
   const caption = await generateCaption(article);
 
