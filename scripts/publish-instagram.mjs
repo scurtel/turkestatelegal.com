@@ -32,11 +32,10 @@ const USE_GEMINI_IMAGES = process.env.USE_GEMINI_IMAGES === "true";
 const POST_IMAGE_NAME = "post.jpg";
 const LEGACY_POST_IMAGE_NAME = "post.png";
 const POST_SIZE = 1080;
-const META_CRAWLER_UA =
-  "facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)";
-const IMAGE_URL_POLL_ATTEMPTS = Number(process.env.IG_IMAGE_URL_POLL_ATTEMPTS || 20);
+const IMAGE_URL_CHECK_UA = "Mozilla/5.0 GitHub-Actions-Instagram-Publisher";
+const IMAGE_URL_POLL_ATTEMPTS = Number(process.env.IG_IMAGE_URL_POLL_ATTEMPTS || 3);
 const IMAGE_URL_POLL_INTERVAL_MS = Number(
-  process.env.IG_IMAGE_URL_POLL_INTERVAL_MS || 30000
+  process.env.IG_IMAGE_URL_POLL_INTERVAL_MS || 5000
 );
 
 const args = process.argv.slice(2);
@@ -601,28 +600,44 @@ async function graphGet(endpoint, credentials) {
   return data;
 }
 
+function logFetchError(error, attempt, imageUrl) {
+  const err = error instanceof Error ? error : new Error(String(error));
+  console.warn(
+    `Image URL check failed (attempt ${attempt}/${IMAGE_URL_POLL_ATTEMPTS}): ${imageUrl}`
+  );
+  console.warn(`  error.name: ${err.name}`);
+  console.warn(`  error.message: ${err.message}`);
+
+  if (err.cause && typeof err.cause === "object") {
+    const cause = err.cause;
+    if ("code" in cause && cause.code !== undefined && cause.code !== "") {
+      console.warn(`  error.cause.code: ${String(cause.code)}`);
+    }
+    if ("message" in cause && cause.message) {
+      console.warn(`  error.cause.message: ${String(cause.message)}`);
+    }
+  }
+}
+
 async function verifyPublicImageUrl(imageUrl) {
   for (let attempt = 1; attempt <= IMAGE_URL_POLL_ATTEMPTS; attempt += 1) {
     try {
       const response = await fetch(imageUrl, {
-        headers: { "User-Agent": META_CRAWLER_UA },
+        headers: { "User-Agent": IMAGE_URL_CHECK_UA },
         redirect: "follow"
       });
       const contentType = (response.headers.get("content-type") || "").toLowerCase();
 
       if (response.ok && contentType.includes("image/jpeg")) {
         console.log(`Image URL ready (attempt ${attempt}): ${imageUrl}`);
-        return;
+        return true;
       }
 
       console.warn(
         `Image URL not ready (attempt ${attempt}/${IMAGE_URL_POLL_ATTEMPTS}): HTTP ${response.status}, Content-Type: ${contentType || "unknown"}`
       );
     } catch (error) {
-      const message = error instanceof Error ? error.message : String(error);
-      console.warn(
-        `Image URL check failed (attempt ${attempt}/${IMAGE_URL_POLL_ATTEMPTS}): ${message}`
-      );
+      logFetchError(error, attempt, imageUrl);
     }
 
     if (attempt < IMAGE_URL_POLL_ATTEMPTS) {
@@ -630,9 +645,7 @@ async function verifyPublicImageUrl(imageUrl) {
     }
   }
 
-  throw new Error(
-    `Image URL not publicly accessible as JPEG after ${IMAGE_URL_POLL_ATTEMPTS} attempts: ${imageUrl}`
-  );
+  return false;
 }
 
 async function waitForContainerReady(containerId, credentials) {
@@ -676,8 +689,6 @@ async function graphPost(endpoint, params) {
 
 async function publishSingleImageToInstagram(slug, caption, credentials) {
   const imageUrl = buildPublicPostImageUrl(slug);
-
-  await verifyPublicImageUrl(imageUrl);
 
   const container = await graphPost(`${credentials.igUserId}/media`, {
     image_url: imageUrl,
@@ -781,7 +792,24 @@ async function publishPreparedInstagram(slug) {
 
   const postImagePath = await ensurePostImageReady(slug, article);
   console.log(`Using Instagram image: ${postImagePath}`);
-  console.log(`Public image URL: ${buildPublicPostImageUrl(slug)}`);
+
+  const imageUrl = buildPublicPostImageUrl(slug);
+  console.log(`Public image URL: ${imageUrl}`);
+
+  const imageReachable = await verifyPublicImageUrl(imageUrl);
+  if (!imageReachable) {
+    console.warn(
+      "Image URL is reachable in browser but not reachable from GitHub runner. Skipping Instagram publish to save Actions minutes."
+    );
+    upsertHistoryEntry(history, {
+      slug,
+      articleUrl: article.articleUrl,
+      status: "draft_only",
+      reason: "image_url_unreachable_from_runner",
+      preparedAt: entry?.preparedAt || new Date().toISOString()
+    });
+    return { slug, status: "draft_only", reason: "image_url_unreachable_from_runner" };
+  }
 
   const caption = await generateCaption(article);
 

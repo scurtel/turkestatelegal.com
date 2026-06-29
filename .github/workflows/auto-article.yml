@@ -84,6 +84,4 @@ jobs:
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
           SITE_BASE_URL: https://turkestatelegal.com
           FB_PAGE_ID: "1097982366728133"
-          IG_IMAGE_URL_POLL_ATTEMPTS: "20"
-          IG_IMAGE_URL_POLL_INTERVAL_MS: "30000"
         run: node scripts/publish-instagram.mjs --publish-only
