@@ -8,7 +8,7 @@ on:
 
 concurrency:
   group: auto-article-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 permissions:
   contents: write
@@ -19,6 +19,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
@@ -54,7 +56,25 @@ jobs:
             exit 0
           fi
           git commit -m "chore: add auto-generated SEO article ($(date -u +%Y-%m-%d))"
-          git push
+
+          max_attempts=5
+          for attempt in $(seq 1 "$max_attempts"); do
+            echo "Push attempt ${attempt}/${max_attempts}"
+            git fetch origin main
+            if ! git pull --rebase origin main; then
+              echo "Rebase failed; aborting rebase."
+              git rebase --abort || true
+              exit 1
+            fi
+            if git push origin HEAD:main; then
+              echo "Push succeeded."
+              exit 0
+            fi
+            echo "Push rejected; retrying after short wait..."
+            sleep $((attempt * 10))
+          done
+          echo "Push failed after ${max_attempts} attempts."
+          exit 1
 
       - name: Publish to Instagram
         continue-on-error: true
