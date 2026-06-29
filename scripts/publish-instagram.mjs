@@ -33,10 +33,12 @@ const POST_IMAGE_NAME = "post.jpg";
 const LEGACY_POST_IMAGE_NAME = "post.png";
 const POST_SIZE = 1080;
 const IMAGE_URL_CHECK_UA = "Mozilla/5.0 GitHub-Actions-Instagram-Publisher";
-const IMAGE_URL_POLL_ATTEMPTS = Number(process.env.IG_IMAGE_URL_POLL_ATTEMPTS || 3);
+const IMAGE_URL_POLL_ATTEMPTS = Number(process.env.IG_IMAGE_URL_POLL_ATTEMPTS || 2);
 const IMAGE_URL_POLL_INTERVAL_MS = Number(
-  process.env.IG_IMAGE_URL_POLL_INTERVAL_MS || 5000
+  process.env.IG_IMAGE_URL_POLL_INTERVAL_MS || 0
 );
+const CONTAINER_READY_MAX_ATTEMPTS = 6;
+const CONTAINER_READY_INTERVAL_MS = 5000;
 
 const args = process.argv.slice(2);
 const publishOnly = args.includes("--publish-only");
@@ -44,6 +46,55 @@ const slugArg = args.find((arg) => arg.startsWith("--slug="))?.split("=")[1];
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+class GraphApiError extends Error {
+  constructor(apiError, httpStatus) {
+    super(apiError?.message || `Graph API error ${httpStatus}`);
+    this.name = "GraphApiError";
+    this.code = apiError?.code;
+    this.errorSubcode = apiError?.error_subcode;
+    this.fbtraceId = apiError?.fbtrace_id;
+    this.type = apiError?.type;
+  }
+}
+
+function logGraphApiError(error) {
+  if (error instanceof GraphApiError) {
+    console.warn("Instagram Graph API error:");
+    console.warn(`  error.message: ${error.message}`);
+    if (error.code !== undefined) {
+      console.warn(`  error.code: ${error.code}`);
+    }
+    if (error.errorSubcode !== undefined) {
+      console.warn(`  error.error_subcode: ${error.errorSubcode}`);
+    }
+    if (error.fbtraceId) {
+      console.warn(`  fbtrace_id: ${error.fbtraceId}`);
+    }
+    return;
+  }
+
+  const err = error instanceof Error ? error : new Error(String(error));
+  console.warn(`Instagram publish failed: ${err.message}`);
+}
+
+function isInstagramImageFetchError(error) {
+  if (!(error instanceof GraphApiError)) {
+    return false;
+  }
+
+  if (error.errorSubcode === 2207052) {
+    return true;
+  }
+
+  const message = error.message.toLowerCase();
+  return (
+    message.includes("could not be fetched") ||
+    message.includes("could not retrieve media") ||
+    message.includes("media download") ||
+    message.includes("media uri")
+  );
 }
 
 function readJson(filePath, fallback) {
@@ -593,8 +644,7 @@ async function graphGet(endpoint, credentials) {
   const data = await response.json();
 
   if (!response.ok) {
-    const message = data?.error?.message || `Graph API error ${response.status}`;
-    throw new Error(message);
+    throw new GraphApiError(data?.error, response.status);
   }
 
   return data;
@@ -640,7 +690,7 @@ async function verifyPublicImageUrl(imageUrl) {
       logFetchError(error, attempt, imageUrl);
     }
 
-    if (attempt < IMAGE_URL_POLL_ATTEMPTS) {
+    if (attempt < IMAGE_URL_POLL_ATTEMPTS && IMAGE_URL_POLL_INTERVAL_MS > 0) {
       await sleep(IMAGE_URL_POLL_INTERVAL_MS);
     }
   }
@@ -648,8 +698,20 @@ async function verifyPublicImageUrl(imageUrl) {
   return false;
 }
 
+async function checkPublicImageUrl(imageUrl) {
+  const reachable = await verifyPublicImageUrl(imageUrl);
+  if (reachable) {
+    console.log(`Public image URL check passed: ${imageUrl}`);
+    return;
+  }
+
+  console.warn(
+    "Public image URL check failed from GitHub runner, but continuing to Instagram publish attempt."
+  );
+}
+
 async function waitForContainerReady(containerId, credentials) {
-  for (let attempt = 1; attempt <= 12; attempt += 1) {
+  for (let attempt = 1; attempt <= CONTAINER_READY_MAX_ATTEMPTS; attempt += 1) {
     const data = await graphGet(`${containerId}?fields=status_code`, credentials);
     const status = data?.status_code;
 
@@ -661,7 +723,9 @@ async function waitForContainerReady(containerId, credentials) {
       throw new Error(`Instagram media container status: ${status}`);
     }
 
-    await sleep(5000);
+    if (attempt < CONTAINER_READY_MAX_ATTEMPTS) {
+      await sleep(CONTAINER_READY_INTERVAL_MS);
+    }
   }
 
   throw new Error("Instagram media container did not finish processing in time.");
@@ -680,8 +744,7 @@ async function graphPost(endpoint, params) {
 
   const data = await response.json();
   if (!response.ok) {
-    const message = data?.error?.message || `Graph API error ${response.status}`;
-    throw new Error(message);
+    throw new GraphApiError(data?.error, response.status);
   }
 
   return data;
@@ -796,20 +859,7 @@ async function publishPreparedInstagram(slug) {
   const imageUrl = buildPublicPostImageUrl(slug);
   console.log(`Public image URL: ${imageUrl}`);
 
-  const imageReachable = await verifyPublicImageUrl(imageUrl);
-  if (!imageReachable) {
-    console.warn(
-      "Image URL is reachable in browser but not reachable from GitHub runner. Skipping Instagram publish to save Actions minutes."
-    );
-    upsertHistoryEntry(history, {
-      slug,
-      articleUrl: article.articleUrl,
-      status: "draft_only",
-      reason: "image_url_unreachable_from_runner",
-      preparedAt: entry?.preparedAt || new Date().toISOString()
-    });
-    return { slug, status: "draft_only", reason: "image_url_unreachable_from_runner" };
-  }
+  await checkPublicImageUrl(imageUrl);
 
   const caption = await generateCaption(article);
 
@@ -819,29 +869,49 @@ async function publishPreparedInstagram(slug) {
       caption,
       credentials
     );
+    const timestamp = new Date().toISOString();
 
     upsertHistoryEntry(history, {
       slug,
       articleUrl: article.articleUrl,
+      status: "published",
       instagramPostId,
-      publishedAt: new Date().toISOString(),
-      status: "published"
+      imageUrl,
+      timestamp
     });
 
     console.log(`Instagram published. Post ID: ${instagramPostId}`);
-    return { slug, status: "published", instagramPostId };
+    return { slug, status: "published", instagramPostId, imageUrl };
   } catch (error) {
-    const message = error instanceof Error ? error.message : String(error);
-    console.warn(`Instagram publish failed: ${message}`);
+    logGraphApiError(error);
+    const timestamp = new Date().toISOString();
+
+    if (isInstagramImageFetchError(error)) {
+      upsertHistoryEntry(history, {
+        slug,
+        articleUrl: article.articleUrl,
+        status: "publish_failed",
+        reason: "instagram_api_could_not_fetch_image",
+        imageUrl,
+        timestamp
+      });
+      return {
+        slug,
+        status: "publish_failed",
+        reason: "instagram_api_could_not_fetch_image",
+        imageUrl
+      };
+    }
+
     upsertHistoryEntry(history, {
       slug,
       articleUrl: article.articleUrl,
-      status: "draft_only",
+      status: "publish_failed",
       reason: "publish_failed",
-      error: message,
-      preparedAt: entry?.preparedAt || new Date().toISOString()
+      imageUrl,
+      timestamp
     });
-    return { slug, status: "draft_only", reason: "publish_failed" };
+    return { slug, status: "publish_failed", reason: "publish_failed", imageUrl };
   }
 }
 
