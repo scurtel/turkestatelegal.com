@@ -18,6 +18,18 @@ const INSTAGRAM_DRAFTS_DIR = path.join(ROOT, "social-drafts", "instagram");
 const SITE_BASE_URL = (
   process.env.SITE_BASE_URL || "https://turkestatelegal.com"
 ).replace(/\/$/, "");
+
+function buildArticleUrl(slug) {
+  return `${SITE_BASE_URL}/articles/${slug}`;
+}
+
+function getSiteDomain() {
+  try {
+    return new URL(SITE_BASE_URL).hostname.replace(/^www\./i, "");
+  } catch {
+    return "turkestatelegal.com";
+  }
+}
 const AUTHOR = "Turks Estate Legal";
 const DISCLAIMER =
   "This article is for general informational purposes only and does not constitute legal advice. Each case should be assessed according to its own facts and current legislation.";
@@ -766,11 +778,14 @@ author: ${AUTHOR}
   return targetPath;
 }
 
-function writeLastArticleMarker(slug) {
+function writeLastArticleMarker(article) {
   fs.mkdirSync(INSTAGRAM_DRAFTS_DIR, { recursive: true });
   writeJson(path.join(INSTAGRAM_DRAFTS_DIR, "last-article.json"), {
-    slug,
-    articleUrl: `${SITE_BASE_URL}/articles/${slug}`,
+    slug: article.slug,
+    title: article.title,
+    excerpt: article.excerpt,
+    articleUrl: buildArticleUrl(article.slug),
+    siteDomain: getSiteDomain(),
     generatedAt: new Date().toISOString()
   });
 }
@@ -810,7 +825,7 @@ async function main() {
   const article = await generateArticlePayload(topic, existingArticles);
   const publishedAt = new Date().toISOString().slice(0, 10);
   const targetPath = writeArticleFile(article, publishedAt);
-  writeLastArticleMarker(article.slug);
+  writeLastArticleMarker(article);
 
   console.log(`Wrote ${targetPath}`);
   console.log(`Slug: ${article.slug}`);

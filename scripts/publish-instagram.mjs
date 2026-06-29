@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /**
- * Instagram draft + carousel generator and optional Graph API publisher.
+ * Instagram draft + single post image generator and optional Graph API publisher.
  * Usage:
- *   node scripts/publish-instagram.mjs              # prepare drafts/images
+ *   node scripts/publish-instagram.mjs              # prepare draft + post.png
  *   node scripts/publish-instagram.mjs --publish-only
  *   node scripts/publish-instagram.mjs --slug=my-article
  */
@@ -24,9 +24,13 @@ const GRAPH_API_VERSION = "v21.0";
 const SITE_BASE_URL = (
   process.env.SITE_BASE_URL || "https://turkestatelegal.com"
 ).replace(/\/$/, "");
+const SITE_NAME = "Turk Estate Legal";
 const DEFAULT_MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
-const CAPTION_DISCLAIMER =
-  "This post is for general information only and does not constitute legal advice.";
+const IMAGE_MODEL =
+  process.env.GEMINI_IMAGE_MODEL || "gemini-2.0-flash-preview-image-generation";
+const USE_GEMINI_IMAGES = process.env.USE_GEMINI_IMAGES === "true";
+const POST_IMAGE_NAME = "post.png";
+const POST_SIZE = 1080;
 
 const args = process.argv.slice(2);
 const publishOnly = args.includes("--publish-only");
@@ -77,6 +81,18 @@ function getCredentials() {
   };
 }
 
+function getSiteDomain() {
+  try {
+    return new URL(SITE_BASE_URL).hostname.replace(/^www\./i, "");
+  } catch {
+    return "turkestatelegal.com";
+  }
+}
+
+function buildArticleUrl(slug) {
+  return `${SITE_BASE_URL}/articles/${slug}`;
+}
+
 function resolveSlug() {
   if (slugArg) {
     return slugArg.trim();
@@ -112,6 +128,8 @@ function loadArticle(slug) {
 
   const source = fs.readFileSync(filePath, "utf8");
   const { data, content } = matter(source);
+  const siteDomain = getSiteDomain();
+
   return {
     slug,
     data,
@@ -119,41 +137,11 @@ function loadArticle(slug) {
     title: String(data.title || slug),
     excerpt: String(data.excerpt || data.seoDescription || "").trim(),
     category: String(data.category || "General Guidance"),
-    articleUrl: `${SITE_BASE_URL}/articles/${slug}`
+    focusKeyword: String(data.focusKeyword || "").trim(),
+    articleUrl: buildArticleUrl(slug),
+    siteName: SITE_NAME,
+    siteDomain
   };
-}
-
-function extractSlideTexts(article) {
-  const skip = new Set([
-    "FAQ",
-    "Related Articles",
-    "Conclusion",
-    "How Turk Estate Legal Can Help"
-  ]);
-  const headings = [...article.content.matchAll(/^##\s+(.+)$/gm)]
-    .map((match) => match[1].trim())
-    .filter((heading) => !skip.has(heading));
-
-  const slides = [
-    {
-      headline: article.title,
-      body: article.excerpt || "Legal guidance for foreign property buyers in Turkey."
-    }
-  ];
-
-  for (const heading of headings.slice(0, 4)) {
-    slides.push({
-      headline: heading,
-      body: "Practical legal context for foreign buyers and investors."
-    });
-  }
-
-  slides.push({
-    headline: "Read the full article",
-    body: "Tap the link in the caption for the complete legal guide."
-  });
-
-  return slides.slice(0, 6);
 }
 
 function escapeXml(value) {
@@ -164,7 +152,7 @@ function escapeXml(value) {
     .replace(/"/g, "&quot;");
 }
 
-function wrapLines(text, maxChars = 34, maxLines = 5) {
+function wrapLines(text, maxChars = 38, maxLines = 4) {
   const words = String(text || "").replace(/\s+/g, " ").trim().split(" ");
   const lines = [];
   let current = "";
@@ -191,70 +179,172 @@ function wrapLines(text, maxChars = 34, maxLines = 5) {
   return lines.slice(0, maxLines);
 }
 
-function buildSlideSvg({ headline, body, index, total }) {
-  const titleLines = wrapLines(headline, 30, 3);
-  const bodyLines = wrapLines(body, 36, 4);
-  const titleStartY = 220;
-  const bodyStartY = titleStartY + titleLines.length * 58 + 40;
+function buildImagePrompt(article) {
+  const summary =
+    article.excerpt ||
+    "Legal guidance for foreign property buyers and investors in Turkey.";
+
+  return `Create a single square Instagram post image for ${article.siteName}.
+Topic:
+${article.title}
+Short summary:
+${summary}
+Design requirements:
+- Create one single Instagram post image, not a carousel.
+- Square format, 1080x1080.
+- Professional legal / real estate brand style.
+- Clean, minimal, trustworthy, premium.
+- Large readable headline.
+- 2-4 lines of supporting text.
+- Show the site domain: ${article.siteDomain}
+- Add a subtle CTA such as "Read more at ${article.siteDomain}"
+- Do not include hashtags inside the image.
+- Do not include the full long article URL inside the image.
+- No people, no fake lawyer photos, no cluttered background.
+- Make the design suitable for Instagram posting.`;
+}
+
+function buildPostSvg(article) {
+  const titleLines = wrapLines(article.title, 32, 3);
+  const bodyLines = wrapLines(
+    article.excerpt ||
+      "Practical legal guidance for foreign buyers and investors in Turkey.",
+    40,
+    4
+  );
+  const titleStartY = 250;
+  const bodyStartY = titleStartY + titleLines.length * 62 + 36;
 
   const titleSvg = titleLines
     .map(
       (line, lineIndex) =>
-        `<text x="90" y="${titleStartY + lineIndex * 58}" font-family="Arial, Helvetica, sans-serif" font-size="46" font-weight="700" fill="#f8fafc">${escapeXml(line)}</text>`
+        `<text x="90" y="${titleStartY + lineIndex * 62}" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="700" fill="#f8fafc">${escapeXml(line)}</text>`
     )
     .join("\n");
 
   const bodySvg = bodyLines
     .map(
       (line, lineIndex) =>
-        `<text x="90" y="${bodyStartY + lineIndex * 42}" font-family="Arial, Helvetica, sans-serif" font-size="30" fill="#cbd5e1">${escapeXml(line)}</text>`
+        `<text x="90" y="${bodyStartY + lineIndex * 44}" font-family="Arial, Helvetica, sans-serif" font-size="30" fill="#cbd5e1">${escapeXml(line)}</text>`
     )
     .join("\n");
 
   return `<?xml version="1.0" encoding="UTF-8"?>
-<svg width="1080" height="1080" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1080" height="1080" fill="#0f172a"/>
-  <rect x="0" y="0" width="1080" height="12" fill="#bea15a"/>
-  <text x="90" y="110" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#bea15a">Turk Estate Legal</text>
+<svg width="${POST_SIZE}" height="${POST_SIZE}" viewBox="0 0 ${POST_SIZE} ${POST_SIZE}" xmlns="http://www.w3.org/2000/svg">
+  <rect width="${POST_SIZE}" height="${POST_SIZE}" fill="#0f172a"/>
+  <rect x="0" y="0" width="${POST_SIZE}" height="10" fill="#bea15a"/>
+  <rect x="70" y="860" width="940" height="2" fill="#334155" opacity="0.6"/>
+  <text x="90" y="120" font-family="Arial, Helvetica, sans-serif" font-size="26" letter-spacing="2" fill="#bea15a">${escapeXml(article.siteName.toUpperCase())}</text>
   ${titleSvg}
   ${bodySvg}
-  <text x="90" y="980" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#94a3b8">${index} / ${total}</text>
-  <text x="990" y="1030" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#bea15a">turkestatelegal.com</text>
+  <text x="90" y="940" font-family="Arial, Helvetica, sans-serif" font-size="26" fill="#94a3b8">Read more at</text>
+  <text x="90" y="990" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" fill="#bea15a">${escapeXml(article.siteDomain)}</text>
 </svg>`;
 }
 
-async function writeCarouselImages(slug, slides) {
-  const outputDir = path.join(PUBLIC_SOCIAL_DIR, slug);
-  fs.mkdirSync(outputDir, { recursive: true });
-
-  const imagePaths = [];
-  for (let index = 0; index < slides.length; index += 1) {
-    const slide = slides[index];
-    const svg = buildSlideSvg({
-      headline: slide.headline,
-      body: slide.body,
-      index: index + 1,
-      total: slides.length
-    });
-    const outputPath = path.join(outputDir, `slide-${index + 1}.png`);
-    await sharp(Buffer.from(svg)).png().toFile(outputPath);
-    imagePaths.push(outputPath);
-  }
-
-  return imagePaths;
+async function writeSvgPostImage(outputPath, article) {
+  const svg = buildPostSvg(article);
+  await sharp(Buffer.from(svg)).png().toFile(outputPath);
 }
 
-function buildHashtags(category) {
-  const base = [
-    "#TurkishProperty",
-    "#TurkeyRealEstate",
-    "#PropertyLawTurkey",
-    "#ForeignBuyersTurkey",
-    "#TurkEstateLegal",
-    "#TitleDeedTurkey",
-    "#LegalDueDiligence",
-    "#PropertyLawyerTurkey"
+async function tryGenerateGeminiImage(imagePrompt, outputPath) {
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (!apiKey || !USE_GEMINI_IMAGES) {
+    return false;
+  }
+
+  const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${IMAGE_MODEL}:generateContent?key=${apiKey}`;
+  const response = await fetch(endpoint, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      contents: [{ role: "user", parts: [{ text: imagePrompt }] }],
+      generationConfig: { responseModalities: ["TEXT", "IMAGE"] }
+    })
+  });
+
+  if (!response.ok) {
+    console.warn("Gemini image generation failed; using SVG post image.");
+    return false;
+  }
+
+  const data = await response.json();
+  const parts = data?.candidates?.[0]?.content?.parts || [];
+  const imagePart = parts.find((part) => part.inlineData?.data);
+
+  if (!imagePart?.inlineData?.data) {
+    console.warn("Gemini returned no image data; using SVG post image.");
+    return false;
+  }
+
+  const buffer = Buffer.from(imagePart.inlineData.data, "base64");
+  await sharp(buffer).resize(POST_SIZE, POST_SIZE, { fit: "cover" }).png().toFile(outputPath);
+  return true;
+}
+
+async function generateSingleInstagramPost(article) {
+  const outputDir = path.join(PUBLIC_SOCIAL_DIR, article.slug);
+  fs.mkdirSync(outputDir, { recursive: true });
+  const outputPath = path.join(outputDir, POST_IMAGE_NAME);
+  const imagePrompt = buildImagePrompt(article);
+
+  const usedGemini = await tryGenerateGeminiImage(imagePrompt, outputPath);
+  if (!usedGemini) {
+    await writeSvgPostImage(outputPath, article);
+  }
+
+  return {
+    outputPath,
+    publicPath: `/social/instagram/${article.slug}/${POST_IMAGE_NAME}`,
+    imagePrompt,
+    source: usedGemini ? "gemini" : "svg"
+  };
+}
+
+function pickHashtagCandidates(article) {
+  const text = `${article.title} ${article.excerpt} ${article.category} ${article.focusKeyword}`.toLowerCase();
+  const candidates = [];
+
+  const rules = [
+    {
+      test: /citizenship|passport|nationality/,
+      tags: ["#TurkishCitizenship", "#CitizenshipByInvestment", "#TurkeyPassport"]
+    },
+    {
+      test: /residence|residency|permit/,
+      tags: ["#TurkeyResidencePermit", "#ExpatLifeTurkey", "#LivingInTurkey"]
+    },
+    {
+      test: /rent|rental|tenant|lease/,
+      tags: ["#TurkeyRentalIncome", "#PropertyInvestment", "#RentalPropertyTurkey"]
+    },
+    {
+      test: /escrow|payment|deposit|transfer/,
+      tags: ["#SafePropertyPayment", "#PropertyEscrow", "#ForeignBuyerTurkey"]
+    },
+    {
+      test: /tapu|title deed|ownership/,
+      tags: ["#TapuTurkey", "#TitleDeedTurkey", "#PropertyOwnership"]
+    },
+    {
+      test: /due diligence|contract|legal review/,
+      tags: ["#LegalDueDiligence", "#PropertyLawTurkey", "#RealEstateLaw"]
+    },
+    {
+      test: /fraud|scam|risk/,
+      tags: ["#PropertyFraudPrevention", "#BuyerProtection", "#RealEstateSafety"]
+    },
+    {
+      test: /foreign|international|expat/,
+      tags: ["#ForeignBuyersTurkey", "#InternationalInvestors", "#TurkeyRealEstate"]
+    }
   ];
+
+  for (const rule of rules) {
+    if (rule.test.test(text)) {
+      candidates.push(...rule.tags);
+    }
+  }
 
   const categoryMap = {
     "Due Diligence": "#DueDiligence",
@@ -265,22 +355,61 @@ function buildHashtags(category) {
     "Fraud Prevention": "#PropertyFraudPrevention"
   };
 
-  const extra = categoryMap[category];
-  const tags = extra ? [...base.slice(0, 7), extra] : base.slice(0, 8);
-  return tags.join(" ");
+  const categoryTag = categoryMap[article.category];
+  if (categoryTag) {
+    candidates.unshift(categoryTag);
+  }
+
+  const defaults = [
+    "#TurkishProperty",
+    "#TurkeyRealEstate",
+    "#PropertyLawTurkey",
+    "#TurkEstateLegal",
+    "#ForeignBuyersTurkey"
+  ];
+
+  const unique = [];
+  for (const tag of [...candidates, ...defaults]) {
+    const normalized = tag.startsWith("#") ? tag : `#${tag}`;
+    if (!unique.includes(normalized)) {
+      unique.push(normalized);
+    }
+    if (unique.length >= 5) {
+      break;
+    }
+  }
+
+  return unique.slice(0, 5);
+}
+
+function buildInstagramHashtags(article) {
+  const tags = pickHashtagCandidates(article);
+  while (tags.length < 4) {
+    tags.push("#TurkishProperty");
+    if (tags.length >= 4) {
+      break;
+    }
+  }
+  return tags.slice(0, 5).join(" ");
+}
+
+function buildInstagramCaption(article, summary, hashtags) {
+  const intro =
+    summary ||
+    article.excerpt ||
+    "New legal guidance for foreign property buyers in Turkey.";
+
+  return `${intro.trim()}
+
+Read the full article:
+${article.articleUrl}
+
+${hashtags}`;
 }
 
 function buildTemplateCaption(article) {
-  const hashtags = buildHashtags(article.category);
-  return `${article.title}
-
-${article.excerpt}
-
-Read more: ${article.articleUrl}
-
-${hashtags}
-
-${CAPTION_DISCLAIMER}`;
+  const hashtags = buildInstagramHashtags(article);
+  return buildInstagramCaption(article, article.excerpt, hashtags);
 }
 
 async function callGemini(prompt) {
@@ -314,8 +443,15 @@ async function callGemini(prompt) {
   return text || null;
 }
 
+function extractHashtagsFromText(text) {
+  const matches = text.match(/#[A-Za-z0-9_]+/g) || [];
+  return [...new Set(matches)].slice(0, 5);
+}
+
 async function generateCaption(article) {
-  const prompt = `Write an Instagram caption in English for turkestatelegal.com.
+  const fallbackHashtags = buildInstagramHashtags(article);
+
+  const prompt = `Write an Instagram caption intro in English for ${article.siteName}.
 
 Article title: ${article.title}
 Article excerpt: ${article.excerpt}
@@ -323,36 +459,49 @@ Article URL: ${article.articleUrl}
 Category: ${article.category}
 
 Rules:
-- Professional, natural tone for foreign property buyers in Turkey
-- 2-4 short paragraphs max
-- Include the article URL once
-- End with exactly 6-10 relevant hashtags on one line
-- End with this disclaimer on its own final line: "${CAPTION_DISCLAIMER}"
-- No hype, no guaranteed outcomes, no "best lawyer"
-- Return caption text only`;
+- Return ONLY the short intro/summary paragraph (2-3 sentences max).
+- Professional, natural tone for foreign property buyers in Turkey.
+- Do NOT include the article URL.
+- Do NOT include hashtags.
+- Do NOT include "Read the full article".
+- No hype, no guaranteed outcomes, no "best lawyer".`;
 
-  const generated = await callGemini(prompt);
-  if (!generated) {
-    return buildTemplateCaption(article);
+  const generatedIntro = await callGemini(prompt);
+  const intro =
+    generatedIntro?.trim() ||
+    article.excerpt ||
+    "New legal guidance for foreign property buyers in Turkey.";
+
+  let hashtags = fallbackHashtags;
+  const hashtagPrompt = `Suggest exactly 5 relevant Instagram hashtags for this article.
+
+Title: ${article.title}
+Excerpt: ${article.excerpt}
+Category: ${article.category}
+
+Rules:
+- Return ONLY 5 hashtags on one line, separated by spaces.
+- Relevant to Turkish property law and foreign buyers.
+- Not spammy, no banned tags.
+- Include #TurkEstateLegal if appropriate.`;
+
+  const generatedTags = await callGemini(hashtagPrompt);
+  const parsedTags = extractHashtagsFromText(generatedTags || "");
+  if (parsedTags.length >= 4) {
+    hashtags = parsedTags.slice(0, 5).join(" ");
   }
 
-  if (!generated.includes(CAPTION_DISCLAIMER)) {
-    return `${generated.trim()}\n\n${CAPTION_DISCLAIMER}`;
-  }
-
-  return generated.trim();
+  return buildInstagramCaption(article, intro, hashtags);
 }
 
-function writeDraftFile(slug, article, caption, slides) {
+function writeDraftFile(slug, article, caption, postMeta) {
   const draftPath = path.join(DRAFTS_DIR, `${slug}.md`);
-  const slideList = slides
-    .map((slide, index) => `${index + 1}. ${slide.headline}`)
-    .join("\n");
 
   const content = `---
 slug: ${slug}
 articleUrl: ${article.articleUrl}
 platform: instagram
+format: single-post
 account: "@turkestatelegal"
 status: draft
 ---
@@ -363,13 +512,17 @@ status: draft
 
 ${caption}
 
-## Carousel Slides
+## Image Prompt
 
-${slideList}
+${postMeta.imagePrompt}
 
-## Image Paths
+## Image Path
 
-${slides.map((_, index) => `/social/instagram/${slug}/slide-${index + 1}.png`).join("\n")}
+/social/instagram/${slug}/${POST_IMAGE_NAME}
+
+## Image Source
+
+${postMeta.source}
 `;
 
   fs.mkdirSync(DRAFTS_DIR, { recursive: true });
@@ -397,29 +550,18 @@ async function graphPost(endpoint, params) {
   return data;
 }
 
-async function publishCarouselToInstagram(slug, caption, slideCount, credentials) {
-  const childIds = [];
-
-  for (let index = 1; index <= slideCount; index += 1) {
-    const imageUrl = `${SITE_BASE_URL}/social/instagram/${slug}/slide-${index}.png`;
-    const child = await graphPost(`${credentials.igUserId}/media`, {
-      image_url: imageUrl,
-      is_carousel_item: "true",
-      access_token: credentials.accessToken
-    });
-    childIds.push(child.id);
-    await sleep(1500);
-  }
-
-  const carousel = await graphPost(`${credentials.igUserId}/media`, {
-    media_type: "CAROUSEL",
-    children: childIds.join(","),
+async function publishSingleImageToInstagram(slug, caption, credentials) {
+  const imageUrl = `${SITE_BASE_URL}/social/instagram/${slug}/${POST_IMAGE_NAME}`;
+  const container = await graphPost(`${credentials.igUserId}/media`, {
+    image_url: imageUrl,
     caption,
     access_token: credentials.accessToken
   });
 
+  await sleep(1500);
+
   const published = await graphPost(`${credentials.igUserId}/media_publish`, {
-    creation_id: carousel.id,
+    creation_id: container.id,
     access_token: credentials.accessToken
   });
 
@@ -438,18 +580,18 @@ async function prepareInstagramContent(slug) {
     throw new Error(`Article not found for slug: ${slug}`);
   }
 
-  const slides = extractSlideTexts(article);
   const caption = await generateCaption(article);
-  const draftPath = writeDraftFile(slug, article, caption, slides);
-  const imagePaths = await writeCarouselImages(slug, slides);
+  const postMeta = await generateSingleInstagramPost(article);
+  const draftPath = writeDraftFile(slug, article, caption, postMeta);
 
   console.log(`Wrote Instagram draft: ${draftPath}`);
-  console.log(`Wrote ${imagePaths.length} carousel images.`);
+  console.log(`Wrote single post image: ${postMeta.outputPath}`);
+  console.log(`Article URL: ${article.articleUrl}`);
 
   const credentials = getCredentials();
   if (!credentials.ready) {
     console.log(
-      "Instagram credentials missing. Draft and carousel images generated only."
+      "Instagram credentials missing. Draft and post image generated only."
     );
     upsertHistoryEntry(history, {
       slug,
@@ -472,7 +614,6 @@ async function prepareInstagramContent(slug) {
     slug,
     articleUrl: article.articleUrl,
     caption,
-    slideCount: slides.length,
     status: "pending_publish"
   };
 }
@@ -494,7 +635,7 @@ async function publishPreparedInstagram(slug) {
   const credentials = getCredentials();
   if (!credentials.ready) {
     console.log(
-      "Instagram credentials missing. Draft and carousel images generated only."
+      "Instagram credentials missing. Draft and post image generated only."
     );
     upsertHistoryEntry(history, {
       slug,
@@ -511,22 +652,17 @@ async function publishPreparedInstagram(slug) {
     throw new Error(`Instagram draft missing for slug: ${slug}`);
   }
 
-  const slideFiles = fs
-    .readdirSync(path.join(PUBLIC_SOCIAL_DIR, slug))
-    .filter((file) => /^slide-\d+\.png$/.test(file));
-  const slideCount = slideFiles.length;
-
-  if (slideCount < 2) {
-    throw new Error(`Not enough carousel images for slug: ${slug}`);
+  const postImagePath = path.join(PUBLIC_SOCIAL_DIR, slug, POST_IMAGE_NAME);
+  if (!fs.existsSync(postImagePath)) {
+    throw new Error(`Instagram post image missing for slug: ${slug}`);
   }
 
   const caption = await generateCaption(article);
 
   try {
-    const instagramPostId = await publishCarouselToInstagram(
+    const instagramPostId = await publishSingleImageToInstagram(
       slug,
       caption,
-      slideCount,
       credentials
     );
 
@@ -586,3 +722,12 @@ if (isMain) {
     process.exit(1);
   });
 }
+
+export {
+  buildArticleUrl,
+  buildImagePrompt,
+  buildInstagramCaption,
+  buildInstagramHashtags,
+  generateSingleInstagramPost,
+  getSiteDomain
+};

@@ -35,7 +35,7 @@ jobs:
           SITE_BASE_URL: https://turkestatelegal.com
         run: node scripts/generate-article.mjs
 
-      - name: Prepare Instagram draft and carousel images
+      - name: Prepare Instagram draft and single post image
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
